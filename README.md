@@ -29,9 +29,9 @@ AllowOverride All
 
 #### Enable `permanent URL`
 
-### install `thermal-api` plugin
+#### install `thermal-api` plugin
 
-### Add the following `.htaccess` files under the wordpress directory
+#### Add the following `.htaccess` files under the wordpress directory
 
 ```apache
 # BEGIN WordPress
