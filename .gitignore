@@ -1,3 +1,13 @@
+/*.php
+!wp-content/
+wp-content/*
+!wp-content/plugins/
+wp-content/plugins/*
+!wp-content/plugins/thermal-api
+wp-admin
+wp-includes
+license.txt
+readme.html
 *.py[cod]
 
 # C extensions
