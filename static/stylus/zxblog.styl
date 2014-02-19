@@ -1,0 +1,75 @@
+@import 'define'
+.body
+  margin 0
+.pg-item-box
+  width 100%
+  min-width pg-width
+  .pg-item
+    margin auto
+    width pg-width
+
+.cup-bar-box
+  height cup-bar-ht
+  background-color cup-bar-bg
+  .cup-bar-logo
+    margin-left pg-width-left
+    margin-top cup-bar-ht - 212px
+    display inline-block
+    width 343px
+    height 212px
+    background url(/static/imgs/icons.png) -0px 2px
+
+.header-bar-box
+  height header-bar-ht
+  background-color header-bar-bg
+  color red
+  .header-bar-logo
+    height 42px
+    width 296px
+  .header-bar-logo-about
+    background url(/static/imgs/icons.png) -0px -263px
+  .header-bar-logo-normal
+    background url(/static/imgs/icons.png) -0px -221px
+  .header-bar-links
+    float right
+    line-height header-bar-ht
+    margin-left 160px
+    color header-bar-color
+    text-decoration none
+    &:hover
+      color header-bar-hover-color
+      text-decoration underline
+
+.footer-bar-box
+  height footer-bar-ht
+  background-color header-bar-bg
+  .footer-bar a
+    color header-bar-color
+    text-decoration none
+    &:hover
+      color header-bar-hover-color
+      text-decoration none
+  .footer-bar
+    .lk-dividor
+      margin 0 10px
+      color header-bar-color
+    .footer-bar-copyright
+      color header-bar-color
+
+.about-page
+  padding-bottom 40px
+  .about-item
+    margin-top 40px
+  .email-item
+    height 480px
+    background url(/static/imgs/about-4.jpg) -0px -0px
+    .email-btn
+      display block
+      position relative
+      top 350px
+      width 138px
+      margin auto
+      height 40px
+      background url(/static/imgs/icons.png) -0px -411px
+      &:hover
+        background url(/static/imgs/icons.png) -148px -411px
