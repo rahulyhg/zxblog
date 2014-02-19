@@ -12,7 +12,8 @@ js:
 	nodejs ~/node_modules/coffee-script/bin/coffee -o ${JS_DIR} -cb ${COFFEE_DIR}*.coffee
 
 pub:
-	rsync -avz . nimei.org:/home/liszt/work/zx/ --include="static/" --include="wp-content/plugins/thermal-api" --exclude="*"
+	rsync -avz ./static/ nimei.org:/home/liszt/work/zx/static 
+	rsync -avz ./wp-content/plugins/thermal-api/ nimei.org:/home/liszt/work/zx/wp-content/plugins/thermal-api
 
 release:
 	- rm -rf release/*
