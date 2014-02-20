@@ -9,7 +9,7 @@ body{margin:0;font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill San
 .header-bar-box{height:120px;background-color:#313131;color:#f00;}
 .header-bar-box .header-bar-logo{height:42px;width:296px}
 .header-bar-box .header-bar-logo-about{background:url("/static/imgs/icons.png") 0 -263px}
-.header-bar-box .header-bar-logo-normal{background:url("/static/imgs/icons.png") 0 -221px}
+.header-bar-box .header-bar-logo-normal{background:url("/static/imgs/icons.png") 0 -218px}
 .header-bar-box .header-bar-link-active{color:#fcdd4a}
 .header-bar-box .header-bar-link-hib{color:#6c6c6c}
 .header-bar-box .header-bar-links{float:right;line-height:120px;margin-left:160px;text-decoration:none;font-weight:bold;font-size:14px;letter-spacing:1px;}

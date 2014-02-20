@@ -3,27 +3,40 @@ var sys_cfg;
 
 sys_cfg = {
   about_url: '/static/about.html',
-  portfolio_url: '/static/portfolio.html'
+  portfolio_url: '/static/portfolio.html',
+  portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=15'
 };
 
-angular.module('zxblog', ['ngRoute']).config(function($routeProvider) {
+angular.module('zxblog', ['ngRoute', 'ngResource']).config(function($routeProvider) {
   return $routeProvider.when('/about', {
     controller: 'AboutCtrl',
     templateUrl: sys_cfg.about_url
-  }).when('/portfolio', {
+  }).when('/portfolio/:page', {
     controller: 'PortfolioCtrl',
     templateUrl: sys_cfg.portfolio_url
   }).otherwise({
     redirectTo: '/about'
   });
-}).controller('PortfolioCtrl', function($rootScope, $scope) {
-  return $rootScope.$pg_type = 'portfolio';
-}).controller('AboutCtrl', function($rootScope, $scope) {
+}).controller('PortfolioCtrl', function($rootScope, $scope, $routeParams, portFactory) {
+  var ports_info;
+  $rootScope.$pg_type = 'portfolio';
+  $rootScope.$header_logo_cls = 'header-bar-logo-normal';
+  return ports_info = portFactory.get({
+    paged: $routeParams.page
+  }, function() {
+    $scope.$ports = ports_info.posts;
+    $scope.$port_count = ports_info.found;
+    return $scope.$current_page = $routeParams.page;
+  });
+}).factory('portFactory', [
+  '$resource', function($resource) {
+    return $resource(sys_cfg.portfolio_data_url, null, {});
+  }
+]).controller('AboutCtrl', function($rootScope, $scope) {
   var b;
   $rootScope.$header_logo_cls = 'header-bar-logo-about';
   return b = 2;
 }).controller('MainCntl', function($rootScope, $scope) {
   var b;
-  $scope.$header_logo_cls = 'header-bar-logo-normal';
   return b = 1;
 });

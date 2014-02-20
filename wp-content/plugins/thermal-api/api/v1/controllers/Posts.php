@@ -268,6 +268,7 @@ class Posts {
 			'excerpt' => $post->post_excerpt,
 			'content' => $post->post_content,
 			'author' => $post->post_author,
+            'thumbnail' => '',
 		);
 
 		//add extended data for 'read'
@@ -302,6 +303,10 @@ class Posts {
 			foreach ( $attachment_ids as $attachment_id ) {
 				if($image_item = self::_format_image_media_item( $attachment_id )) {
 					$media[$attachment_id] = $image_item;
+                    if ($thumbnail_id == $attachment_id)
+                    {
+                        $data['thumbnail'] = @$image_item['sizes'][0]['url'];
+                    }
 				}
 			}
 
