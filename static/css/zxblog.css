@@ -1,7 +1,7 @@
 .ver-mid-wrapper{height:100%;}
 .ver-mid-wrapper:before{display:inline-block;height:100%;vertical-align:middle;content:'\0020'}
 .ver-mid-wrapper .ver-mid-item{display:inline-block;vertical-align:middle}
-.body{margin:0}
+body{margin:0;font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gill Sans MT","Myriad Pro",Myriad,"DejaVu Sans Condensed","Liberation Sans","Nimbus Sans L",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif}
 .pg-item-box{width:100%;min-width:960px;}
 .pg-item-box .pg-item{margin:auto;width:960px}
 .cup-bar-box{height:240px;background-color:#fcdd4a;}
@@ -10,9 +10,9 @@
 .header-bar-box .header-bar-logo{height:42px;width:296px}
 .header-bar-box .header-bar-logo-about{background:url("/static/imgs/icons.png") 0 -263px}
 .header-bar-box .header-bar-logo-normal{background:url("/static/imgs/icons.png") 0 -221px}
-.header-bar-box .header-bar-links{float:right;line-height:120px;margin-left:160px;color:#6c6c6c;text-decoration:none;}
+.header-bar-box .header-bar-links{float:right;line-height:120px;margin-left:160px;color:#6c6c6c;text-decoration:none;font-weight:bold;font-size:14px;letter-spacing:1px;}
 .header-bar-box .header-bar-links:hover{color:#fcdd4a;text-decoration:underline}
-.footer-bar-box{height:170px;background-color:#313131;}
+.footer-bar-box{height:170px;background-color:#313131;letter-spacing:1px;}
 .footer-bar-box .footer-bar a{color:#6c6c6c;text-decoration:none;}
 .footer-bar-box .footer-bar a:hover{color:#fcdd4a;text-decoration:none}
 .footer-bar-box .footer-bar .lk-dividor{margin:0 10px;color:#6c6c6c}
