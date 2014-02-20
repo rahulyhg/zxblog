@@ -2,17 +2,28 @@
 var sys_cfg;
 
 sys_cfg = {
-  about_url: '/static/about.html'
+  about_url: '/static/about.html',
+  portfolio_url: '/static/portfolio.html'
 };
 
 angular.module('zxblog', ['ngRoute']).config(function($routeProvider) {
   return $routeProvider.when('/about', {
     controller: 'AboutCtrl',
     templateUrl: sys_cfg.about_url
+  }).when('/portfolio', {
+    controller: 'PortfolioCtrl',
+    templateUrl: sys_cfg.portfolio_url
   }).otherwise({
-    redirectTo: 'about'
+    redirectTo: '/about'
   });
-}).controller('AboutCtrl', function($scope, Projects) {
+}).controller('PortfolioCtrl', function($rootScope, $scope) {
+  return $rootScope.$pg_type = 'portfolio';
+}).controller('AboutCtrl', function($rootScope, $scope) {
   var b;
+  $rootScope.$header_logo_cls = 'header-bar-logo-about';
+  return b = 2;
+}).controller('MainCntl', function($rootScope, $scope) {
+  var b;
+  $scope.$header_logo_cls = 'header-bar-logo-normal';
   return b = 1;
 });
