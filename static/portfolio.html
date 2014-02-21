@@ -1,4 +1,33 @@
-hahaha
+<div class="pg-item">
+    <div class="ports">
+        <div class="port" ng-init="mover=0"  ng-repeat="$port in $ports"
+             ng-mouseover="mover=1" ng-mouseleave="mover=0">
+            <div class="port-normal" ng-hide="mover">
+                <img width=240 height=240
+                     src="{{$port.thumbnail}}" class="" alt="{{$port.title}}" />
+            </div>
+            <div class="port-hover" ng-show="mover">
+                <div class="port-desc">
+                    <span class="port-desc-content">{{$port.excerpt_display || '文章标题' }}</span>
+                </div>
+                <div class="port-goto">
+                    <a href="#port/{{$port.id}}"
+                       title="{{$port.title}}"
+                       class="port-goto-btn">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pages-nav">
+        <div class="pages">
+            <div class="pg-item" ng-repeat="$pg in $pgs">
+                <a href="#portfolio/{{$pg.pg}}" class="rounded-corner"
+                   ng-class="{false: 'pg-normal', true: 'pg-current'}[$pg.pg==$current_page]">{{$pg.txt}}</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{$port_count}}
 

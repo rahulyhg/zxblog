@@ -81,3 +81,67 @@ body
       background url(/static/imgs/icons.png) -0px -411px
       &:hover
         background url(/static/imgs/icons.png) -148px -411px
+
+.ports
+  margin-right - port-space
+  margin-top 40px
+  //div
+  //  outline show-outline
+  .port
+    width port-ht
+    height port-ht
+    display inline-block
+    border port-bd-w port-bg solid
+    margin 0 port-space 70px 0
+    overflow hidden
+    background-color port-bg
+    >div
+      height 100%
+    .port-hover
+      .port-desc
+        height port-ht - 70px - 30px
+        padding-top 30px
+        span
+          width 176px
+          margin auto
+          display block
+          overflow hidden
+      .port-goto
+        height 70px
+        a
+          display block
+          position relative
+          width 176px
+          margin auto
+          height 40px
+          background url(/static/imgs/icons.png) 0px -460px
+          &:hover
+            background url(/static/imgs/icons.png) -184px -460px
+
+.pages-nav
+  text-align center
+  .pages
+    margin auto
+    height 40px
+    #outline show-outline
+    display inline-block
+    .pg-item
+      width 40px
+      height 40px
+      margin-right 20px
+      display inline-block
+      a
+        width 40px
+        height 40px
+        display block
+        text-decoration none
+        line-height 40px
+        color header-bar-bg
+        &.pg-current
+          background-color cup-bar-bg
+        &.pg-normal
+          background-color btn-bg-dis
+          &:hover
+            background-color cup-bar-bg
+
+          
