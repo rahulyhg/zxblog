@@ -4,7 +4,10 @@ var page_generator, sys_cfg;
 sys_cfg = {
   about_url: '/static/about.html',
   portfolio_url: '/static/portfolio.html',
-  portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=15'
+  blogs_url: '/static/blogs.html',
+  portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=15',
+  posts_data_url: '/wp_api/v1/posts?per_page=2',
+  cats_list_url: '/wp_api/v1/taxonomies/category/terms'
 };
 
 angular.module('zxblog', ['ngRoute', 'ngResource']).config(function($routeProvider) {
@@ -14,10 +17,58 @@ angular.module('zxblog', ['ngRoute', 'ngResource']).config(function($routeProvid
   }).when('/portfolio/:page', {
     controller: 'PortfolioCtrl',
     templateUrl: sys_cfg.portfolio_url
+  }).when('/posts/:catname/:page', {
+    controller: 'BlogsCtrl',
+    templateUrl: sys_cfg.blogs_url
   }).otherwise({
     redirectTo: '/about'
   });
-}).controller('PortfolioCtrl', function($rootScope, $scope, $routeParams, portFactory) {
+}).controller('BlogsCtrl', function($rootScope, $scope, $routeParams, postsFactory) {
+  var cat_name, fat_param, posts_info;
+  $rootScope.$pg_type = 'posts';
+  $rootScope.$header_logo_cls = 'header-bar-logo-normal';
+  cat_name = $routeParams.catname === 'all' ? '' : $routeParams.catname;
+  fat_param = {
+    category_name: cat_name,
+    paged: $routeParams.page
+  };
+  return posts_info = postsFactory.get(fat_param, function() {
+    $scope.$posts = posts_info.posts;
+    $scope.$current_page = $routeParams.page;
+    $scope.$catname = $routeParams.catname;
+    return $scope.$pgs = page_generator(posts_info.found, 2, $routeParams.page);
+  });
+}).factory('postsFactory', [
+  '$resource', function($resource) {
+    return $resource(sys_cfg.posts_data_url, null, {});
+  }
+]).controller('CatsCtrl', function($rootScope, $scope, $routeParams, catsFactory) {
+  var cats_info;
+  return cats_info = catsFactory.get({}, function() {
+    var cat, cats, pghd, _i, _len, _ref, _ref1;
+    cats = [
+      {
+        name: 'all'
+      }
+    ];
+    pghd = function(cat) {
+      return cats.push(cat);
+    };
+    _ref = cats_info.terms;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      cat = _ref[_i];
+      if (!((_ref1 = cat.name) === '未分类' || _ref1 === 'portfolio')) {
+        pghd(cat);
+      }
+    }
+    $scope.$cats = cats;
+    return $scope.$cat_name = $routeParams.catname;
+  });
+}).factory('catsFactory', [
+  '$resource', function($resource) {
+    return $resource(sys_cfg.cats_list_url, null, {});
+  }
+]).controller('PortfolioCtrl', function($rootScope, $scope, $routeParams, portFactory) {
   var ports_info;
   $rootScope.$pg_type = 'portfolio';
   $rootScope.$header_logo_cls = 'header-bar-logo-normal';

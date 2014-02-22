@@ -1,6 +1,7 @@
 @import 'define'
 body
   margin 0
+body, a
   font-family Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif
 .pg-item-box
   width 100%
@@ -8,6 +9,9 @@ body
   .pg-item
     margin auto
     width pg-width
+.ng-view-box
+    clear both
+
 
 .cup-bar-box
   height cup-bar-ht
@@ -27,9 +31,9 @@ body
   .header-bar-logo
     height 42px
     width 296px
-  .header-bar-logo-about
-    background url(/static/imgs/icons.png) -0px -263px
   .header-bar-logo-normal
+    background url(/static/imgs/icons.png) -0px -263px
+  .header-bar-logo-about
     background url(/static/imgs/icons.png) -0px -218px
   .header-bar-link-active
     color header-bar-hover-color
@@ -118,8 +122,50 @@ body
           &:hover
             background url(/static/imgs/icons.png) -184px -460px
 
+.posts-pg-left
+  width posts-list-left
+  display inline-block
+  float left
+.posts-pg-right
+  width pg-width - posts-list-left
+  display inline-block
+
+.posts-list
+  .posts-list-item
+    &:hover
+      background-color cup-bar-bg
+    padding 40px 0
+
+.post-cats
+  height 120px
+  border-bottom 1px btn-bg-dis solid
+  >div
+    height 120px
+    float left
+  a.post-cat-item
+    margin 40px 20px 0 0
+    padding 0 10px
+    display inline-block
+    line-height 40px
+    height 40px
+    font-size 14px
+    text-decoration none
+    line-height 40px
+    color header-bar-bg
+    letter-spacing 1px
+    &.pg-current
+      background-color cup-bar-bg
+      text-decoration underline
+    &.pg-normal
+      background-color btn-bg-dis
+      &:hover
+        background-color cup-bar-bg
+        text-decoration underline
+
+
 .pages-nav
   text-align center
+  margin 40px 0
   .pages
     margin auto
     height 40px
@@ -139,9 +185,11 @@ body
         color header-bar-bg
         &.pg-current
           background-color cup-bar-bg
+          text-decoration underline
         &.pg-normal
           background-color btn-bg-dis
           &:hover
             background-color cup-bar-bg
+            text-decoration underline
 
           

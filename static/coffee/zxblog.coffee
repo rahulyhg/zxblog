@@ -2,7 +2,10 @@
 sys_cfg =
     about_url: '/static/about.html'
     portfolio_url: '/static/portfolio.html'
+    blogs_url: '/static/blogs.html'
     portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=15'
+    posts_data_url: '/wp_api/v1/posts?per_page=2'
+    cats_list_url: '/wp_api/v1/taxonomies/category/terms'
 
 angular.module('zxblog', ['ngRoute', 'ngResource'])
 
@@ -16,7 +19,41 @@ angular.module('zxblog', ['ngRoute', 'ngResource'])
             controller: 'PortfolioCtrl'
             templateUrl: sys_cfg.portfolio_url
             })
+        .when('/posts/:catname/:page', {
+            controller: 'BlogsCtrl'
+            templateUrl: sys_cfg.blogs_url
+            })
         .otherwise {redirectTo: '/about'}
+
+.controller 'BlogsCtrl', ($rootScope, $scope, $routeParams, postsFactory)->
+    # ui related
+    $rootScope.$pg_type = 'posts'
+    $rootScope.$header_logo_cls = 'header-bar-logo-normal'
+    cat_name = if ($routeParams.catname == 'all') then '' else $routeParams.catname
+    fat_param = {
+        category_name: cat_name
+        paged: $routeParams.page
+        }
+    posts_info = postsFactory.get fat_param, () ->
+        $scope.$posts = posts_info.posts
+        $scope.$current_page = $routeParams.page
+        $scope.$catname = $routeParams.catname
+        $scope.$pgs = page_generator posts_info.found, 2, $routeParams.page
+        
+.factory('postsFactory', ['$resource', ($resource) ->
+    $resource sys_cfg.posts_data_url, null, {}])
+
+.controller 'CatsCtrl', ($rootScope, $scope, $routeParams, catsFactory)->
+    cats_info = catsFactory.get {}, () ->
+        cats = [{name: 'all'}]
+        pghd = (cat)->
+            cats.push cat
+        pghd cat for cat in cats_info.terms when (not (cat.name in ['未分类', 'portfolio']))
+        $scope.$cats = cats
+        $scope.$cat_name = $routeParams.catname
+        
+.factory('catsFactory', ['$resource', ($resource) ->
+    $resource sys_cfg.cats_list_url, null, {}])
 
 .controller 'PortfolioCtrl', ($rootScope, $scope, $routeParams, portFactory) ->
     # ui related

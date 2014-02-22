@@ -2,15 +2,17 @@
 .ver-mid-wrapper:before{display:inline-block;height:100%;vertical-align:middle;content:'\0020'}
 .ver-mid-wrapper .ver-mid-item{display:inline-block;vertical-align:middle}
 .rounded-corner{-moz-border-radius:5px;border-radius:5px}
-body{margin:0;font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gill Sans MT","Myriad Pro",Myriad,"DejaVu Sans Condensed","Liberation Sans","Nimbus Sans L",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif}
+body{margin:0}
+body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gill Sans MT","Myriad Pro",Myriad,"DejaVu Sans Condensed","Liberation Sans","Nimbus Sans L",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif}
 .pg-item-box{width:100%;min-width:960px;}
 .pg-item-box .pg-item{margin:auto;width:960px}
+.ng-view-box{clear:both}
 .cup-bar-box{height:240px;background-color:#fcdd4a;}
 .cup-bar-box .cup-bar-logo{margin-left:360px;margin-top:28px;display:inline-block;width:343px;height:212px;background:url("/static/imgs/icons.png") 0 2px}
 .header-bar-box{height:120px;background-color:#313131;color:#f00;}
 .header-bar-box .header-bar-logo{height:42px;width:296px}
-.header-bar-box .header-bar-logo-about{background:url("/static/imgs/icons.png") 0 -263px}
-.header-bar-box .header-bar-logo-normal{background:url("/static/imgs/icons.png") 0 -218px}
+.header-bar-box .header-bar-logo-normal{background:url("/static/imgs/icons.png") 0 -263px}
+.header-bar-box .header-bar-logo-about{background:url("/static/imgs/icons.png") 0 -218px}
 .header-bar-box .header-bar-link-active{color:#fcdd4a}
 .header-bar-box .header-bar-link-hib{color:#6c6c6c}
 .header-bar-box .header-bar-links{float:right;line-height:120px;margin-left:160px;text-decoration:none;font-weight:bold;font-size:14px;letter-spacing:1px;}
@@ -33,10 +35,20 @@ body{margin:0;font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill San
 .ports .port .port-hover .port-goto{height:70px;}
 .ports .port .port-hover .port-goto a{display:block;position:relative;width:176px;margin:auto;height:40px;background:url("/static/imgs/icons.png") 0 -460px;}
 .ports .port .port-hover .port-goto a:hover{background:url("/static/imgs/icons.png") -184px -460px}
-.pages-nav{text-align:center;}
+.posts-pg-left{width:360px;display:inline-block;float:left}
+.posts-pg-right{width:600px;display:inline-block}
+.posts-list .posts-list-item{padding:40px 0}
+.posts-list .posts-list-item:hover{background-color:#fcdd4a}
+.post-cats{height:120px;border-bottom:1px #ebebeb solid;}
+.post-cats >div{height:120px;float:left}
+.post-cats a.post-cat-item{margin:40px 20px 0 0;padding:0 10px;display:inline-block;line-height:40px;height:40px;font-size:14px;text-decoration:none;line-height:40px;color:#313131;letter-spacing:1px;}
+.post-cats a.post-cat-item.pg-current{background-color:#fcdd4a;text-decoration:underline}
+.post-cats a.post-cat-item.pg-normal{background-color:#ebebeb;}
+.post-cats a.post-cat-item.pg-normal:hover{background-color:#fcdd4a;text-decoration:underline}
+.pages-nav{text-align:center;margin:40px 0;}
 .pages-nav .pages{margin:auto;height:40px;}
 .pages-nav .pages #outline show-outline,.pages-nav .pages display inline-block,.pages-nav .pages .pg-item{width:40px;height:40px;margin-right:20px;display:inline-block;}
 .pages-nav .pages #outline show-outline a,.pages-nav .pages display inline-block a,.pages-nav .pages .pg-item a{width:40px;height:40px;display:block;text-decoration:none;line-height:40px;color:#313131;}
-.pages-nav .pages #outline show-outline a.pg-current,.pages-nav .pages display inline-block a.pg-current,.pages-nav .pages .pg-item a.pg-current{background-color:#fcdd4a}
+.pages-nav .pages #outline show-outline a.pg-current,.pages-nav .pages display inline-block a.pg-current,.pages-nav .pages .pg-item a.pg-current{background-color:#fcdd4a;text-decoration:underline}
 .pages-nav .pages #outline show-outline a.pg-normal,.pages-nav .pages display inline-block a.pg-normal,.pages-nav .pages .pg-item a.pg-normal{background-color:#ebebeb;}
-.pages-nav .pages #outline show-outline a.pg-normal:hover,.pages-nav .pages display inline-block a.pg-normal:hover,.pages-nav .pages .pg-item a.pg-normal:hover{background-color:#fcdd4a}
+.pages-nav .pages #outline show-outline a.pg-normal:hover,.pages-nav .pages display inline-block a.pg-normal:hover,.pages-nav .pages .pg-item a.pg-normal:hover{background-color:#fcdd4a;text-decoration:underline}
