@@ -37,8 +37,14 @@ body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gil
 .ports .port .port-hover .port-goto a:hover{background:url("/static/imgs/icons.png") -184px -460px}
 .posts-pg-left{width:360px;display:inline-block;float:left}
 .posts-pg-right{width:600px;display:inline-block}
-.posts-list .posts-list-item{padding:40px 0}
-.posts-list .posts-list-item:hover{background-color:#fcdd4a}
+.posts-list:hover{background-color:#fcdd4a}
+.posts-list .posts-list-item{padding:40px 0;}
+.posts-list .posts-list-item .posts-pg-left{letter-spacing:1px;}
+.posts-list .posts-list-item .posts-pg-left span{font-size:14px}
+.posts-list .posts-list-item .posts-pg-left .post-cat-item{text-transform:capitalize}
+.posts-list .posts-list-item .posts-pg-right{letter-spacing:1px;}
+.posts-list .posts-list-item .posts-pg-right .post-list-item-title a{text-transform:capitalize;font-size:28px;text-decoration:none;color:#313131}
+.posts-list .posts-list-item .posts-pg-right .post-list-item-content{font-size:14px;margin-top:20px}
 .post-cats{height:120px;border-bottom:1px #ebebeb solid;}
 .post-cats >div{height:120px;float:left}
 .post-cats a.post-cat-item{margin:40px 20px 0 0;padding:0 10px;display:inline-block;line-height:40px;height:40px;font-size:14px;text-decoration:none;line-height:40px;color:#313131;letter-spacing:1px;}

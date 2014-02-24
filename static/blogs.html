@@ -11,29 +11,40 @@
             </a>
         </div>
     </div>
-
-    <div class="posts-list">
-        <div class="posts-list-item" ng-repeat="$post in $posts">
-            <div class="posts-pg-left">
-                <div class="post-list-item-attr">
-                    Blog / {{$post.taxonomies.category[Object.keys($post.taxonomies.category)[0]].name}}
-                </div>
-                <div class="post-list-item-attr">
-                    {{$post.date}}
-                </div>
-            </div>
-            <div class="posts-pg-right">
-                {{$post.content}}
-            </div>
-        </div>
-    </div>
-
-    <div class="pages-nav">
-        <div class="pages">
-            <div class="pg-item" ng-repeat="$pg in $pgs">
-                <a href="#posts/{{$catname}}/{{$pg.pg}}" class="rounded-corner"
-                   ng-class="{false: 'pg-normal', true: 'pg-current'}[$pg.pg==$current_page]">{{$pg.txt}}</a>
-            </div>
-        </div>
-    </div>
 </div>
+<div class="pg-item-box posts-list" ng-repeat="$post in $posts">
+  <div class="pg-item posts-list-item">
+    <table>
+    <tr><td style="vertical-align: bottom;">
+    <div class="posts-pg-left">
+      <div class="post-list-item-attr">
+        <span class="post-list-item-cats" ng-repeat="($catid, $cate) in $post.taxonomies.category">
+          <span class="post-list-item-cats-dividor" ng-show="$index">/</span>
+          <span class="post-cat-item">{{$cate.name}}</span>
+        </span>
+      </div>
+      <div class="post-list-item-attr">
+        {{$post.date}}
+      </div>
+    </div></td><td>
+    <div class="posts-pg-right">
+      <div class="post-list-item-title">
+        <a href="#/post/{{$post.id}}" title="{{$post.title}}">
+          {{$post.title}}
+        </a>
+      </div>
+      <div class="post-list-item-content">
+        {{$post.content}}
+      </div>
+    </div></td></tr></table>
+  </div>
+</div>
+<div class="pg-item-box">
+  <div class="pg-item pages-nav" style="padding: 40px 0; border-top: 1px #ebebeb solid;">
+    <div class="pages">
+      <div class="pg-item" ng-repeat="$pg in $pgs">
+        <a href="#posts/{{$catname}}/{{$pg.pg}}" class="rounded-corner"
+           ng-class="{false: 'pg-normal', true: 'pg-current'}[$pg.pg==$current_page]">{{$pg.txt}}</a>
+      </div>
+    </div>
+  </div>

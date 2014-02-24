@@ -5,9 +5,11 @@ sys_cfg = {
   about_url: '/static/about.html',
   portfolio_url: '/static/portfolio.html',
   blogs_url: '/static/blogs.html',
+  post_url: '/static/post.html',
   portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=15',
   posts_data_url: '/wp_api/v1/posts?per_page=2',
-  cats_list_url: '/wp_api/v1/taxonomies/category/terms'
+  post_data_url: '/wp_api/v1/posts/:postid',
+  cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=5'
 };
 
 angular.module('zxblog', ['ngRoute', 'ngResource']).config(function($routeProvider) {
@@ -20,6 +22,9 @@ angular.module('zxblog', ['ngRoute', 'ngResource']).config(function($routeProvid
   }).when('/posts/:catname/:page', {
     controller: 'BlogsCtrl',
     templateUrl: sys_cfg.blogs_url
+  }).when('/post/:postid', {
+    controller: 'PostCtrl',
+    templateUrl: sys_cfg.post_url
   }).otherwise({
     redirectTo: '/about'
   });
@@ -27,7 +32,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource']).config(function($routeProvid
   var cat_name, fat_param, posts_info;
   $rootScope.$pg_type = 'posts';
   $rootScope.$header_logo_cls = 'header-bar-logo-normal';
-  cat_name = $routeParams.catname === 'all' ? '' : $routeParams.catname;
+  cat_name = $routeParams.catname === 'all' ? 'blog' : $routeParams.catname;
   fat_param = {
     category_name: cat_name,
     paged: $routeParams.page
@@ -41,6 +46,22 @@ angular.module('zxblog', ['ngRoute', 'ngResource']).config(function($routeProvid
 }).factory('postsFactory', [
   '$resource', function($resource) {
     return $resource(sys_cfg.posts_data_url, null, {});
+  }
+]).controller('PostCtrl', function($rootScope, $scope, $routeParams, postFactory) {
+  var post_info;
+  $rootScope.$pg_type = 'post';
+  $rootScope.$header_logo_cls = 'header-bar-logo-normal';
+  return post_info = postFactory.get({
+    postid: $routeParams.postid
+  }, function() {
+    $scope.$post = post_info;
+    return console.log(post_info);
+  });
+}).factory('postFactory', [
+  '$resource', function($resource) {
+    return $resource(sys_cfg.post_data_url, {
+      id: '@postid'
+    }, {});
   }
 ]).controller('CatsCtrl', function($rootScope, $scope, $routeParams, catsFactory) {
   var cats_info;
@@ -57,7 +78,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource']).config(function($routeProvid
     _ref = cats_info.terms;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       cat = _ref[_i];
-      if (!((_ref1 = cat.name) === '未分类' || _ref1 === 'portfolio')) {
+      if (!((_ref1 = cat.name) === '未分类' || _ref1 === 'portfolio' || _ref1 === 'blog')) {
         pghd(cat);
       }
     }

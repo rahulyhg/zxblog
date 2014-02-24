@@ -131,10 +131,27 @@ body, a
   display inline-block
 
 .posts-list
+  &:hover
+    background-color cup-bar-bg
   .posts-list-item
-    &:hover
-      background-color cup-bar-bg
     padding 40px 0
+    .posts-pg-left
+      letter-spacing 1px
+      span
+        font-size 14px
+      .post-cat-item
+        text-transform capitalize
+    .posts-pg-right
+      letter-spacing 1px
+      .post-list-item-title a
+        text-transform capitalize
+        font-size 28px
+        text-decoration none
+        color header-bar-bg
+      .post-list-item-content
+        font-size 14px
+        margin-top 20px
+        
 
 .post-cats
   height 120px
