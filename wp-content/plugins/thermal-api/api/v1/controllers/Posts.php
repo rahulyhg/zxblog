@@ -269,6 +269,8 @@ class Posts {
 			'content' => apply_filters('the_content', $post->post_content),
 			'author' => $post->post_author,
             'thumbnail' => '',
+            'prev_post' => get_adjacent_post(true, '', true),
+            'next_post' => get_adjacent_post(true, '', false),
 		);
 
 		//add extended data for 'read'
