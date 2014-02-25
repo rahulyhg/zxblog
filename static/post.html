@@ -1,1 +1,23 @@
-hahaha
+<div class="pg-item post-page">
+    <div class="post-info">
+        <div class="post-title">
+            <span class="title">
+                {{$post.title}}
+            </span>
+        </div>
+        <div class="post-date-cat">
+            <span class="post-cat" ng-repeat="($catid, $cate) in $post.taxonomies.category">
+                <span class="post-list-item-cats-dividor" ng-show="$index">/</span>
+                <a class="post-cat-item" href="/posts/{{$cate.name}}/1">{{$cate.name}}</a>
+            </span>
+
+            </span>
+            <span class="post-date">{{$post.date}}</span>
+        </div>
+    </div>
+    <div class="post-content" ng-bind-html="$post.content_display">
+    </div>
+    <div class="post-comment">
+        
+    </div>
+</div>

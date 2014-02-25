@@ -12,7 +12,7 @@ sys_cfg = {
   cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=5'
 };
 
-angular.module('zxblog', ['ngRoute', 'ngResource']).config(function($routeProvider) {
+angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(function($routeProvider) {
   return $routeProvider.when('/about', {
     controller: 'AboutCtrl',
     templateUrl: sys_cfg.about_url

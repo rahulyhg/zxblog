@@ -9,7 +9,7 @@ sys_cfg =
     post_data_url: '/wp_api/v1/posts/:postid'
     cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=5'
 
-angular.module('zxblog', ['ngRoute', 'ngResource'])
+angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
 
 .config ($routeProvider) ->
     $routeProvider
@@ -48,14 +48,14 @@ angular.module('zxblog', ['ngRoute', 'ngResource'])
         
 .factory('postsFactory', ['$resource', ($resource) ->
     $resource sys_cfg.posts_data_url, null, {}])
-.controller 'PostCtrl', ($rootScope, $scope, $routeParams, postFactory)->
+.controller('PostCtrl', ($rootScope, $scope, $routeParams, postFactory)->
     $rootScope.$pg_type = 'post'
     $rootScope.$header_logo_cls = 'header-bar-logo-normal'
 
     post_info = postFactory.get {postid: $routeParams.postid}, () ->
         $scope.$post = post_info
         console.log post_info
-        
+        )
 .factory('postFactory', ['$resource', ($resource) ->
     $resource sys_cfg.post_data_url, {id: '@postid'}, {}])
 

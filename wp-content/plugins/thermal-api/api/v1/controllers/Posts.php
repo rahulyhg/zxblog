@@ -266,7 +266,7 @@ class Posts {
 			'title' => $post->post_title,
 			'name' => $post->post_name,
 			'excerpt' => $post->post_excerpt,
-			'content' => $post->post_content,
+			'content' => apply_filters('the_content', $post->post_content),
 			'author' => $post->post_author,
             'thumbnail' => '',
 		);
@@ -324,7 +324,7 @@ class Posts {
 
 			remove_filter( 'the_content', 'do_shortcode', 11 );
 			remove_filter( 'the_content', 'convert_smilies' );
-			remove_filter( 'the_content', 'shortcode_unautop' );
+			//remove_filter( 'the_content', 'shortcode_unautop' );
 
 			// remove "<!--more-->" teaser text for display content
 			$post_more = get_extended( $post->post_content );
