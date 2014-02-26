@@ -58,7 +58,7 @@ body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gil
 .pages-nav .pages #outline show-outline a.pg-current,.pages-nav .pages display inline-block a.pg-current,.pages-nav .pages .pg-item a.pg-current{background-color:#fcdd4a;text-decoration:underline}
 .pages-nav .pages #outline show-outline a.pg-normal,.pages-nav .pages display inline-block a.pg-normal,.pages-nav .pages .pg-item a.pg-normal{background-color:#ebebeb;}
 .pages-nav .pages #outline show-outline a.pg-normal:hover,.pages-nav .pages display inline-block a.pg-normal:hover,.pages-nav .pages .pg-item a.pg-normal:hover{background-color:#fcdd4a;text-decoration:underline}
-.post-page{letter-spacing:1px;padding:40px 0;overflow:hidden;}
+.post-page{letter-spacing:1px;font-size:14px;padding:40px 0;overflow:hidden;}
 .post-page .post-info{width:700px;margin-bottom:30px;}
 .post-page .post-info .post-title{font-size:28px;color:#313131;text-transform:capitalize;margin-bottom:20px}
 .post-page .post-info .post-date-cat{font-size:14px;text-transform:capitalize;}

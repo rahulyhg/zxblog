@@ -16,8 +16,73 @@
         </div>
     </div>
     <div class="post-content" ng-bind-html="$post.content_display">
+        
     </div>
     <div class="post-comment">
-        
+        <div class="com-header">
+            Comments
+        </div>
+        <div class="comments">
+            <div class="comment" ng-repeat="$c in $comments">
+                <div class="comment-content">
+                    {{$c.content}}
+                </div>
+                <div class="comment-info">
+                    <span class="comment-author">{{$c.author}}</span>
+                    <span class="comment-date">{{$c.date}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="comment-post">
+            <div class="com-header">
+                Add your throughts
+            </div>
+            <div class="com-form">
+                <form method="" action="" name="postcom">
+                    <div class="control-group">
+                        <input type="textarea" name="comment" value=""
+                               ng-model="$comment.comment" required/>
+                        <span class="">
+                        </span>
+                    </div>
+                    <div class="control-group">
+                        <label>What should I call you?</label>
+                        <input type="text" name="author" value=""
+                               ng-model="$comment.author" required />
+                        <span class="">
+                        </span>
+                    </div>
+                    <div class="control-group">
+                        <label>And your E-mail is ...</label>
+                        <input type="email" name="email" value=""
+                               ng-model="$comment.email" required />
+                        <span class="">
+                        </span>
+                    </div>
+                    <div class="">
+                        <button ng-click="save()"
+                                ng-disabled="postcom.$invalid"
+                                class="btn btn-primary">Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="post-nav" ng-show="$post.next_post">
+    <div class="pg-item post-link next-post">
+        <a href="#/post/{{$post.next_post.ID}}"
+           title="{{$post.next_post.post_title}}">
+            {{$post.next_post.post_title}}
+        </a>
+    </div>
+</div>
+<div class="post-nav" ng-show="$post.prev_post">
+    <div class="pg-item post-link prev-post">
+        <a href="#/post/{{$post.prev_post.ID}}"
+           title="{{$post.prev_post.post_title}}">
+            {{$post.prev_post.post_title}}
+        </a>
     </div>
 </div>

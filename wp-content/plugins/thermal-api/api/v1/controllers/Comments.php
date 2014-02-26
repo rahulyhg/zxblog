@@ -44,6 +44,31 @@ class Comments {
 		return self::_find( $app, $args );
 	}
 
+	public static function addByPost( $app, $post_id ) {
+        $comment_post_ID = $post_id;
+
+        // I copy these lines from wp-comments-post.php
+        // So I'm not responsible for the coding style and god bless wp
+        // wp code start
+        //$comment_post_ID = isset($_POST['comment_post_ID']) ? (int) $_POST['comment_post_ID'] : 0;
+        $comment_author       = ( isset($_POST['author']) )  ? trim(strip_tags($_POST['author'])) : null;
+        $comment_author_email = ( isset($_POST['email']) )   ? trim($_POST['email']) : null;
+        $comment_author_url   = ( isset($_POST['url']) )     ? trim($_POST['url']) : null;
+        $comment_content      = ( isset($_POST['comment']) ) ? trim($_POST['comment']) : null;
+        $comment_parent = isset($_POST['comment_parent']) ? absint($_POST['comment_parent']) : 0;
+        $commentdata = compact('comment_post_ID', 'comment_author', 'comment_author_email', 'comment_author_url', 'comment_content', 'comment_type', 'comment_parent');
+
+        $comment_id = wp_new_comment( $commentdata );
+        // wp code end
+        return array('app' =>$app,
+                     'id' => $post_id,
+                     'post' =>$_POST,
+                     'commentdatat' => $commentdata,
+                     'cid' => $comment_id);
+	}
+
+
+
 	public static function findById( $app, $id ) {
 		$comment = self::model()->findById( $id );
 		if ( !$comment ) {
@@ -164,7 +189,7 @@ class Comments {
 			'author_url' => $comment->comment_author_url,
 			'parent' => intval( $comment->comment_parent ),
 			'parent_str' => ( string ) $comment->comment_parent,
-			'date' => ( string ) get_comment_time( 'c', true, $comment ),
+			'date' => ( string ) get_comment_time( 'y-m-d H:i', true, $comment ),
 			'content' => $comment->comment_content,
 			'status' => $status,
 			'user' => intval( $comment->user_id ),

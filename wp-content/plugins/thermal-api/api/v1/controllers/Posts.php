@@ -324,7 +324,7 @@ class Posts {
 				}
 			}
 
-			remove_filter( 'the_content', 'do_shortcode', 11 );
+			//remove_filter( 'the_content', 'do_shortcode', 11 );
 			remove_filter( 'the_content', 'convert_smilies' );
 			//remove_filter( 'the_content', 'shortcode_unautop' );
 

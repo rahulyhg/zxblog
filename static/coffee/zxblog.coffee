@@ -7,6 +7,7 @@ sys_cfg =
     portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=15'
     posts_data_url: '/wp_api/v1/posts?per_page=2'
     post_data_url: '/wp_api/v1/posts/:postid'
+    comments_data_url: '/wp_api/v1/posts/:postid/comments?paged=1&per_page=5'
     cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=5'
 
 angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
@@ -48,16 +49,48 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
         
 .factory('postsFactory', ['$resource', ($resource) ->
     $resource sys_cfg.posts_data_url, null, {}])
-.controller('PostCtrl', ($rootScope, $scope, $routeParams, postFactory)->
+.controller('PostCtrl', ($rootScope, $scope, $routeParams, postFactory, commentsFactory)->
     $rootScope.$pg_type = 'post'
     $rootScope.$header_logo_cls = 'header-bar-logo-normal'
 
-    post_info = postFactory.get {postid: $routeParams.postid}, () ->
+    #post comment related
+    $scope.save = () ->
+        # we can add the comment loaclly
+        $scope.$comment.date = 'Just now'
+        $scope.$comments.unshift $scope.$comment
+        console.log $scope.$comment
+        q = ["comment_post_ID=" + $routeParams.postid]
+        coll = (p) ->
+            q.push p + "=" + $scope.$comment[p]
+        coll k for k in ['comment', 'author', 'email']
+        
+        com_param =
+            method: 'POST'
+            url: '/wp_api/v1/posts/' + $routeParams.postid + '/comments'
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            data: q.join '&'
+
+        eat = (k) ->
+            $scope.$comment[k] = '' 
+        postFactory.poster(com_param).then (response)->
+            $scope.$comment = {}
+            #eat k for k in ['comment', 'author', 'email']
+            
+    post_info = postFactory.getter.get {postid: $routeParams.postid}, () ->
         $scope.$post = post_info
-        console.log post_info
+    comments = commentsFactory.get  {postid: $routeParams.postid}, () ->
+        $scope.$comments = comments.comments
         )
-.factory('postFactory', ['$resource', ($resource) ->
-    $resource sys_cfg.post_data_url, {id: '@postid'}, {}])
+.factory('postFactory', ['$resource', '$http', ($resource, $http) ->
+    return {
+        getter: $resource sys_cfg.post_data_url, {id: '@postid'}, {}
+        poster: (com_param) ->
+            $http.defaults.headers.post["Content-Type"] = "application/json"
+            $http(com_param)
+                
+    }])
+.factory('commentsFactory', ['$resource', ($resource) ->
+    $resource sys_cfg.comments_data_url, {id: '@postid'}, {}])
 
 .controller 'CatsCtrl', ($rootScope, $scope, $routeParams, catsFactory)->
     cats_info = catsFactory.get {}, () ->

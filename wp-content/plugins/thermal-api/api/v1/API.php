@@ -34,6 +34,7 @@ class API extends \Voce\Thermal\API_Base {
 		$this->registerRoute( 'GET', 'posts/?', array( __NAMESPACE__ . '\\controllers\\Posts', 'find' ) );
 		$this->registerRoute( 'GET', 'posts/:id/?', array( __NAMESPACE__ . '\\controllers\\Posts', 'findById' ) );
 		$this->registerRoute( 'GET', 'posts/:id/comments/?', array( __NAMESPACE__ . '\\controllers\\Comments', 'findByPost' ) );
+		$this->registerRoute( 'POST', 'posts/:id/comments/?', array( __NAMESPACE__ . '\\controllers\\Comments', 'addByPost' ) );
 		$this->registerRoute( 'GET', 'users/?', array( __NAMESPACE__ . '\\controllers\\Users', 'find' ) );
 		$this->registerRoute( 'GET', 'users/:id/?', array( __NAMESPACE__ . '\\controllers\\Users', 'findById' ) );
 		$this->registerRoute( 'GET', 'taxonomies/?', array( __NAMESPACE__ . '\\controllers\\Taxonomies', 'find' ) );

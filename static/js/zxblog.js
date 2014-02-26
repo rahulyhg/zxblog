@@ -9,6 +9,7 @@ sys_cfg = {
   portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=15',
   posts_data_url: '/wp_api/v1/posts?per_page=2',
   post_data_url: '/wp_api/v1/posts/:postid',
+  comments_data_url: '/wp_api/v1/posts/:postid/comments?paged=1&per_page=5',
   cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=5'
 };
 
@@ -47,19 +48,64 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
   '$resource', function($resource) {
     return $resource(sys_cfg.posts_data_url, null, {});
   }
-]).controller('PostCtrl', function($rootScope, $scope, $routeParams, postFactory) {
-  var post_info;
+]).controller('PostCtrl', function($rootScope, $scope, $routeParams, postFactory, commentsFactory) {
+  var comments, post_info;
   $rootScope.$pg_type = 'post';
   $rootScope.$header_logo_cls = 'header-bar-logo-normal';
-  return post_info = postFactory.get({
+  $scope.save = function() {
+    var coll, com_param, eat, k, q, _i, _len, _ref;
+    $scope.$comment.date = 'Just now';
+    $scope.$comments.unshift($scope.$comment);
+    console.log($scope.$comment);
+    q = ["comment_post_ID=" + $routeParams.postid];
+    coll = function(p) {
+      return q.push(p + "=" + $scope.$comment[p]);
+    };
+    _ref = ['comment', 'author', 'email'];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      k = _ref[_i];
+      coll(k);
+    }
+    com_param = {
+      method: 'POST',
+      url: '/wp_api/v1/posts/' + $routeParams.postid + '/comments',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: q.join('&')
+    };
+    eat = function(k) {
+      return $scope.$comment[k] = '';
+    };
+    return postFactory.poster(com_param).then(function(response) {
+      return $scope.$comment = {};
+    });
+  };
+  post_info = postFactory.getter.get({
     postid: $routeParams.postid
   }, function() {
-    $scope.$post = post_info;
-    return console.log(post_info);
+    return $scope.$post = post_info;
+  });
+  return comments = commentsFactory.get({
+    postid: $routeParams.postid
+  }, function() {
+    return $scope.$comments = comments.comments;
   });
 }).factory('postFactory', [
+  '$resource', '$http', function($resource, $http) {
+    return {
+      getter: $resource(sys_cfg.post_data_url, {
+        id: '@postid'
+      }, {}),
+      poster: function(com_param) {
+        $http.defaults.headers.post["Content-Type"] = "application/json";
+        return $http(com_param);
+      }
+    };
+  }
+]).factory('commentsFactory', [
   '$resource', function($resource) {
-    return $resource(sys_cfg.post_data_url, {
+    return $resource(sys_cfg.comments_data_url, {
       id: '@postid'
     }, {});
   }
