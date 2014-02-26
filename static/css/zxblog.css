@@ -66,3 +66,20 @@ body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gil
 .post-page .post-info .post-date-cat .post-date{margin-left:40px}
 .post-page .post-content a{color:#fcdd4a}
 .post-page .post-content .wp-caption>p.wp-caption-text{margin-top:10px;font-size:14px;color:#c9c9c9;font-style:italic}
+.post-page .post-comment .com-header{font-size:18px;margin:40px 0 20px 0;font-weight:bold}
+.post-page .post-comment >div.comments .comment{margin-bottom:40px;line-height:14px;font-size:14px;}
+.post-page .post-comment >div.comments .comment .comment-info{font-style:italic;margin-top:20px;color:#c9c9c9;}
+.post-page .post-comment >div.comments .comment .comment-info .comment-date{margin-left:40px}
+.post-page .post-comment >div.comment-post textarea{height:200px;width:400px;font-size:14px}
+.post-page .post-comment >div.comment-post label{margin:20px 0;font-size:18px;clear:both;display:block;line-height:18px}
+.post-page .post-comment >div.comment-post input[type=text],.post-page .post-comment >div.comment-post input[type=email]{font-size:18px;width:400px;height:50px}
+.post-page .post-comment >div.comment-post button{display:block;height:40px;width:196px;border:none;background:url("/static/imgs/icons.png") 0 -362px;}
+.post-page .post-comment >div.comment-post button:disabled{background:url("/static/imgs/icons.png") -206px -362px}
+.post-page .post-comment >div.comment-post button:hover{background:url("/static/imgs/icons.png") -206px -362px}
+.post-page .post-comment >div.comment-post .button-div{margin-top:30px}
+.post-nav{padding:30px 0;}
+.post-nav a{font-size:18px;text-decoration:none;color:#313131;font-weight:bold;line-height:18px;}
+.post-nav a:before{margin-right:20px}
+.post-nav .next-post a:before{content:">"}
+.post-nav .prev-post a:before{content:"<"}
+.post-nav:hover{background-color:#fcdd4a}
