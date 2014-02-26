@@ -34,7 +34,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
 
 .controller 'BlogsCtrl', ($rootScope, $scope, $routeParams, postsFactory)->
     # ui related
-    $rootScope.$pg_type = 'posts'
+    $rootScope.$pg_type = 'post'
     $rootScope.$header_logo_cls = 'header-bar-logo-normal'
     cat_name = if ($routeParams.catname == 'all') then 'blog' else $routeParams.catname
     fat_param = {

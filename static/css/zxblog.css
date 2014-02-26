@@ -11,7 +11,8 @@ body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gil
 .cup-bar-box .cup-bar-logo{margin-left:360px;margin-top:28px;display:inline-block;width:343px;height:212px;background:url("/static/imgs/icons.png") 0 2px}
 .header-bar-box{height:120px;background-color:#313131;color:#f00;}
 .header-bar-box .header-bar-logo{height:42px;width:296px}
-.header-bar-box .header-bar-logo-normal{background:url("/static/imgs/icons.png") 0 -263px}
+.header-bar-box .header-bar-logo-normal{background:url("/static/imgs/icons.png") 0 -263px;}
+.header-bar-box .header-bar-logo-normal:hover{background:url("/static/imgs/icons.png") 0 -218px}
 .header-bar-box .header-bar-logo-about{background:url("/static/imgs/icons.png") 0 -218px}
 .header-bar-box .header-bar-link-active{color:#fcdd4a}
 .header-bar-box .header-bar-link-hib{color:#6c6c6c}

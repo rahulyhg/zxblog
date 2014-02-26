@@ -4,6 +4,7 @@ wp-content/*
 !wp-content/plugins/
 wp-content/plugins/*
 !wp-content/plugins/thermal-api
+!wp-content/plugins/wp-subtitle
 wp-admin
 wp-includes
 license.txt

@@ -31,7 +31,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
   });
 }).controller('BlogsCtrl', function($rootScope, $scope, $routeParams, postsFactory) {
   var cat_name, fat_param, posts_info;
-  $rootScope.$pg_type = 'posts';
+  $rootScope.$pg_type = 'post';
   $rootScope.$header_logo_cls = 'header-bar-logo-normal';
   cat_name = $routeParams.catname === 'all' ? 'blog' : $routeParams.catname;
   fat_param = {

@@ -254,7 +254,6 @@ class Posts {
 		//edit provides a slimmed down response containing only editable fields
 		$GLOBALS['post'] = $post;
 		setup_postdata( $post );
-
 		$data = array(
 			'type' => $post->post_type,
 			'parent' => $post->post_parent,
@@ -271,8 +270,8 @@ class Posts {
             'thumbnail' => '',
             'prev_post' => get_adjacent_post(true, '', true),
             'next_post' => get_adjacent_post(true, '', false),
+            'subtitle' => the_subtitle(),
 		);
-
 		//add extended data for 'read'
 		if ( $state == 'read' ) {
 			$media = array( );
