@@ -13,7 +13,7 @@ js:
 
 pub:
 	rsync -avz ./static/ nimei.org:/home/liszt/work/zx/static 
-	rsync -avz ./wp-content/plugins/thermal-api/ nimei.org:/home/liszt/work/zx/wp-content/plugins/thermal-api
+	rsync -avz ./wp-content/plugins/ nimei.org:/home/liszt/work/zx/wp-content/plugins
 
 release:
 	- rm -rf release/*
