@@ -1,14 +1,16 @@
-<div class="pg-item posts-page">
-    <div class="post-cats" ng-controller="CatsCtrl">
-        <div class="posts-pg-left">
-            
-        </div>
-        <div class="posts-pg-right">
-            <a class="post-cat-item rounded-corner" ng-repeat="$cat in $cats"
-               href="#/posts/{{$cat.slug}}/1"
-               ng-class="{false: 'pg-normal', true: 'pg-current'}[$cat.slug==$cat_name]">
-                {{$cat.name}}
-            </a>
+<div class="pg-item-box" style="background-color: white;">
+    <div class="pg-item posts-page">
+        <div class="post-cats" ng-controller="CatsCtrl">
+            <div class="posts-pg-left">
+                
+            </div>
+            <div class="posts-pg-right">
+                <a class="post-cat-item rounded-corner" ng-repeat="$cat in $cats"
+                   href="#/posts/{{$cat.slug}}/1"
+                   ng-class="{false: 'pg-normal', true: 'pg-current'}[$cat.slug==$cat_name]">
+                    {{$cat.name}}
+                </a>
+            </div>
         </div>
     </div>
 </div>

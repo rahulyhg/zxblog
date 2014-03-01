@@ -4,11 +4,12 @@
 .rounded-corner{-moz-border-radius:5px;border-radius:5px}
 body{margin:0}
 body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gill Sans MT","Myriad Pro",Myriad,"DejaVu Sans Condensed","Liberation Sans","Nimbus Sans L",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif}
-.pg-item-box{width:100%;min-width:960px;}
+.pg-item-box{width:100%;min-width:960px;background-color:#fff;}
 .pg-item-box .pg-item{margin:auto;width:960px}
 .ng-view-box{clear:both}
-.cup-bar-box{height:240px;background-color:#fcdd4a;}
+.cup-bar-box{height:240px;background-color:#fcdd4a;position:fixed;top:0;z-index:-1000;}
 .cup-bar-box .cup-bar-logo{margin-left:360px;margin-top:28px;display:inline-block;width:343px;height:212px;background:url("/static/imgs/icons.png") 0 2px}
+.fixed-header-bar{position:fixed;top:0;z-index:1000}
 .header-bar-box{height:120px;background-color:#313131;color:#f00;}
 .header-bar-box .header-bar-logo{height:42px;width:296px}
 .header-bar-box .header-bar-logo-normal{background:url("/static/imgs/icons.png") 0 -263px;}
@@ -23,7 +24,7 @@ body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gil
 .footer-bar-box .footer-bar a:hover{color:#fcdd4a;text-decoration:none}
 .footer-bar-box .footer-bar .lk-dividor{margin:0 10px;color:#6c6c6c}
 .footer-bar-box .footer-bar .footer-bar-copyright{color:#6c6c6c}
-.about-page{padding-bottom:40px;}
+.about-page{padding-bottom:40px;padding-top:1px;}
 .about-page .about-item{margin-top:40px}
 .about-page .email-item{height:480px;background:url("/static/imgs/about-4.jpg") 0 0;}
 .about-page .email-item .email-btn{display:block;position:relative;top:350px;width:138px;margin:auto;height:40px;background:url("/static/imgs/icons.png") 0 -411px;}
@@ -52,7 +53,7 @@ body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gil
 .post-cats a.post-cat-item.pg-current{background-color:#fcdd4a;text-decoration:underline}
 .post-cats a.post-cat-item.pg-normal{background-color:#ebebeb;}
 .post-cats a.post-cat-item.pg-normal:hover{background-color:#fcdd4a;text-decoration:underline}
-.pages-nav{text-align:center;margin:40px 0;}
+.pages-nav{text-align:center;padding:40px 0;}
 .pages-nav .pages{margin:auto;height:40px;}
 .pages-nav .pages #outline show-outline,.pages-nav .pages display inline-block,.pages-nav .pages .pg-item{width:40px;height:40px;margin-right:20px;display:inline-block;}
 .pages-nav .pages #outline show-outline a,.pages-nav .pages display inline-block a,.pages-nav .pages .pg-item a{width:40px;height:40px;display:block;text-decoration:none;line-height:40px;color:#313131;}

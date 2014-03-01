@@ -6,6 +6,7 @@ body, a
 .pg-item-box
   width 100%
   min-width pg-width
+  background-color white
   .pg-item
     margin auto
     width pg-width
@@ -16,6 +17,9 @@ body, a
 .cup-bar-box
   height cup-bar-ht
   background-color cup-bar-bg
+  position fixed
+  top 0
+  z-index -1000
   .cup-bar-logo
     margin-left pg-width-left
     margin-top cup-bar-ht - 212px
@@ -23,6 +27,11 @@ body, a
     width 343px
     height 212px
     background url(/static/imgs/icons.png) -0px 2px
+
+.fixed-header-bar
+  position fixed
+  top 0
+  z-index 1000
 
 .header-bar-box
   height header-bar-ht
@@ -72,6 +81,7 @@ body, a
 
 .about-page
   padding-bottom 40px
+  padding-top 1px
   .about-item
     margin-top 40px
   .email-item
@@ -184,7 +194,7 @@ body, a
 
 .pages-nav
   text-align center
-  margin 40px 0
+  padding 40px 0
   .pages
     margin auto
     height 40px

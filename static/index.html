@@ -6,10 +6,28 @@
         <script src="/static/js/angular-route.min.js"></script>
         <script src="/static/js/firebase.js"></script>
         <script src="/static/js/angularfire.min.js"></script>
-        <!-- <script src="/static/js/jquery-1.10.1.min.js"></script> -->
+        <script src="/static/js/jquery-1.10.1.min.js"></script>
         <script src="/static/js/zxblog.js?relver=3"></script>
         <script type="text/javascript" src="/static/js/angular-sanitize-1.0.1.js"></script>
         <link rel="stylesheet" href="/static/css/zxblog.css" type="text/css"/>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var fix_div = $("#header-bar-box");
+                var position = fix_div.position();
+            $(window).scroll(function(){
+                var winpos = $(window).scrollTop();
+                if(winpos >= position.top){
+                fix_div.addClass("fixed-header-bar");
+                $('#blank_div').height(360);
+            }
+            else
+            {
+                fix_div.removeClass("fixed-header-bar");
+                $('#blank_div').height(240);
+            }
+        });
+    });
+</script>
         <title>Xuan's design</title>
     </head>
     <body>
@@ -21,7 +39,10 @@
                     </div>
               </div>
         </div>
-        <div class="pg-item-box header-bar-box" ng-controller="MainCntl">
+        <div id="blank_div" class="pg-item-box" style="height: 240px; background-color: rgba(0,0,0,0);">
+          
+        </div>
+        <div class="pg-item-box header-bar-box" id="header-bar-box" ng-controller="MainCntl">
           <div class="pg-item header-bar ver-mid-wrapper">
             <a class="ver-mid-item header-bar-logo {{$header_logo_cls}}"
                href="#/about">
