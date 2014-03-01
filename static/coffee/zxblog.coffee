@@ -8,7 +8,7 @@ sys_cfg =
     posts_data_url: '/wp_api/v1/posts?per_page=2'
     post_data_url: '/wp_api/v1/posts/:postid'
     comments_data_url: '/wp_api/v1/posts/:postid/comments?paged=1&per_page=5'
-    cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=5'
+    cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=4&orderby=slug'
 
 angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
 
@@ -36,7 +36,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
     # ui related
     $rootScope.$pg_type = 'post'
     $rootScope.$header_logo_cls = 'header-bar-logo-normal'
-    cat_name = if ($routeParams.catname == 'all') then 'blog' else $routeParams.catname
+    cat_name = if ($routeParams.catname == 'all') then '1-blog' else $routeParams.catname
     fat_param = {
         category_name: cat_name
         paged: $routeParams.page
@@ -94,13 +94,13 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
 
 .controller 'CatsCtrl', ($rootScope, $scope, $routeParams, catsFactory)->
     cats_info = catsFactory.get {}, () ->
-        cats = [{name: 'all'}]
+        cats = [{name: 'all', slug: '1-blog'}]
         pghd = (cat)->
             cats.push cat
         pghd cat for cat in cats_info.terms when (not (cat.name in ['未分类', 'portfolio', 'blog']))
         $scope.$cats = cats
-        $scope.$cat_name = $routeParams.catname
-        
+        $scope.$cat_name = if ($routeParams.catname == 'all') then '1-blog' else $routeParams.catname
+
 .factory('catsFactory', ['$resource', ($resource) ->
     $resource sys_cfg.cats_list_url, null, {}])
 
@@ -114,7 +114,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
         $scope.$ports = ports_info.posts
         $scope.$port_count = ports_info.found
         $scope.$current_page = $routeParams.page
-        $scope.$pgs = page_generator ports_info.found*22, 15, $routeParams.page
+        $scope.$pgs = page_generator ports_info.found, 15, $routeParams.page
 
 .factory('portFactory', ['$resource', ($resource) ->
     $resource sys_cfg.portfolio_data_url, null, {}])
