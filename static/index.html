@@ -10,29 +10,6 @@
         <script src="/static/js/zxblog.js?relver=3"></script>
         <script type="text/javascript" src="/static/js/angular-sanitize-1.0.1.js"></script>
         <link rel="stylesheet" href="/static/css/zxblog.css" type="text/css"/>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                var fix_div = $("#header-bar-box");
-                var position = fix_div.position();
-            $(window).scroll(function(){
-                var winpos = $(window).scrollTop();
-                if(winpos >= position.top){
-                fix_div.addClass("fixed-header-bar");
-                
-                $('#blank_div').height(300);
-                $('.header-bar-links').removeClass('header-bar-links-normal');
-                $('.header-bar-box').height(60);
-            }
-            else
-            {
-                fix_div.removeClass("fixed-header-bar");
-                $('#blank_div').height(240);
-                $('.header-bar-links').addClass('header-bar-links-normal');
-                $('.header-bar-box').height(120);
-            }
-        });
-    });
-</script>
         <title>Xuan's design</title>
     </head>
     <body>

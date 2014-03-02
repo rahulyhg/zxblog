@@ -14,24 +14,20 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
 
 .config ($routeProvider) ->
     $routeProvider
-        .when('/about', {
+        .when '/about',
             controller: 'AboutCtrl'
             templateUrl: sys_cfg.about_url
-            })
-        .when('/portfolio/:page', {
+        .when '/portfolio/:page',
             controller: 'PortfolioCtrl'
             templateUrl: sys_cfg.portfolio_url
-            })
-        .when('/posts/:catname/:page', {
+        .when '/posts/:catname/:page',
             controller: 'BlogsCtrl'
             templateUrl: sys_cfg.blogs_url
-            })
-        .when('/post/:postid', {
+        .when '/post/:postid',
             controller: 'PostCtrl'
             templateUrl: sys_cfg.post_url
-            })
-        .otherwise {redirectTo: '/about'}
-
+        .otherwise
+            redirectTo: '/about'
 .controller 'BlogsCtrl', ($rootScope, $scope, $routeParams, postsFactory)->
     # ui related
     $rootScope.$pg_type = 'post'
@@ -149,3 +145,20 @@ page_generator = (total, per, current) ->
     pghd pg for pg in [hd..tl]
     lks.push {pg: pgs, txt: '>>'} if pgs > tl
     return lks
+
+$(document).ready ()->
+    fix_div = $ '#header-bar-box'
+    position = fix_div.position()
+    $(window).scroll ()->
+        winpos = $(window).scrollTop()
+        if winpos >= position.top
+            fix_div.addClass 'fixed-header-bar'
+            $('#blank_div').height 300
+            $('.header-bar-links').removeClass 'header-bar-links-normal'
+            $('.header-bar-box').height 60
+        else
+            fix_div.removeClass 'fixed-header-bar'
+            $('#blank_div').height 240
+            $('.header-bar-links').addClass 'header-bar-links-normal'
+            $('.header-bar-box').height 120
+            
