@@ -18,12 +18,17 @@
                 var winpos = $(window).scrollTop();
                 if(winpos >= position.top){
                 fix_div.addClass("fixed-header-bar");
-                $('#blank_div').height(360);
+                
+                $('#blank_div').height(300);
+                $('.header-bar-links').removeClass('header-bar-links-normal');
+                $('.header-bar-box').height(60);
             }
             else
             {
                 fix_div.removeClass("fixed-header-bar");
                 $('#blank_div').height(240);
+                $('.header-bar-links').addClass('header-bar-links-normal');
+                $('.header-bar-box').height(120);
             }
         });
     });
@@ -48,7 +53,7 @@
                href="#/about">
               
             </a>
-            <a href="#posts/all/1" class="header-bar-links"
+            <a href="#posts/all/1" class="header-bar-links header-bar-links-normal"
                ng-class="{false: 'header-bar-link-hib', true: 'header-bar-link-active'}[$pg_type=='post']">BLOG</a>
             <a href="#/portfolio/1" class="header-bar-links" ng-class="{false: 'header-bar-link-hib', true: 'header-bar-link-active'}[$pg_type=='portfolio']">PORTFOLIO</a>
           </div>
