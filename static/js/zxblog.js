@@ -56,7 +56,6 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
     var coll, com_param, eat, k, q, _i, _len, _ref;
     $scope.$comment.date = 'Just now';
     $scope.$comments.unshift($scope.$comment);
-    console.log($scope.$comment);
     q = ["comment_post_ID=" + $routeParams.postid];
     coll = function(p) {
       return q.push(p + "=" + $scope.$comment[p]);
@@ -91,7 +90,20 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
   }, function() {
     return $scope.$comments = comments.comments;
   });
-}).factory('postFactory', [
+}).directive('fancyIt', [
+  '$compile', function($compile) {
+    return function(scope, element, attrs) {
+      return scope.$watch('$post', function(n_val, o_val) {
+        if (n_val && (!o_val)) {
+          element.html(n_val.content_display);
+          return $('.post-page .post-content a>img').each(function() {
+            return $(this).parent().fancybox();
+          });
+        }
+      });
+    };
+  }
+]).factory('postFactory', [
   '$resource', '$http', function($resource, $http) {
     return {
       getter: $resource(sys_cfg.post_data_url, {

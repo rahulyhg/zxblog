@@ -54,7 +54,6 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
         # we can add the comment loaclly
         $scope.$comment.date = 'Just now'
         $scope.$comments.unshift $scope.$comment
-        console.log $scope.$comment
         q = ["comment_post_ID=" + $routeParams.postid]
         coll = (p) ->
             q.push p + "=" + $scope.$comment[p]
@@ -70,13 +69,20 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
             $scope.$comment[k] = '' 
         postFactory.poster(com_param).then (response)->
             $scope.$comment = {}
-            #eat k for k in ['comment', 'author', 'email']
             
     post_info = postFactory.getter.get {postid: $routeParams.postid}, () ->
         $scope.$post = post_info
     comments = commentsFactory.get  {postid: $routeParams.postid}, () ->
         $scope.$comments = comments.comments
         )
+.directive('fancyIt', ['$compile', ($compile)->
+    (scope, element, attrs) ->
+        scope.$watch '$post', (n_val, o_val) ->
+            if n_val and (not o_val)
+                element.html n_val.content_display
+                $('.post-page .post-content a>img').each ()->
+                    $(this).parent().fancybox()
+    ])
 .factory('postFactory', ['$resource', '$http', ($resource, $http) ->
     return {
         getter: $resource sys_cfg.post_data_url, {id: '@postid'}, {}

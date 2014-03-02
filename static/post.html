@@ -1,4 +1,4 @@
-<div class="pg-item post-page">
+<div class="pg-item post-page" ng-controller="PostCtrl">
     <div class="post-info">
         <div class="post-title">
             <span class="title">
@@ -15,7 +15,9 @@
             <span class="post-date">{{$post.date}}</span>
         </div>
     </div>
-    <div class="post-content" ng-bind-html="$post.content_display">
+<!-- ng-bind-html="$post.content_display" -->
+    <div class="post-content" 
+         fancy-it>
         
     </div>
     <div class="post-comment">
