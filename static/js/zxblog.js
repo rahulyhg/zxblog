@@ -226,12 +226,12 @@ $(document).ready(function() {
     if (winpos >= position.top) {
       fix_div.addClass('fixed-header-bar');
       $('#blank_div').height(300);
-      $('.header-bar-links').removeClass('header-bar-links-normal');
+      $('.header-bar-links').removeClass('header-bar-links-unfix');
       return $('.header-bar-box').height(60);
     } else {
       fix_div.removeClass('fixed-header-bar');
       $('#blank_div').height(240);
-      $('.header-bar-links').addClass('header-bar-links-normal');
+      $('.header-bar-links').addClass('header-bar-links-unfix');
       return $('.header-bar-box').height(120);
     }
   });
