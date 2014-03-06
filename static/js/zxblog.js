@@ -223,6 +223,11 @@ $(document).ready(function() {
   return $(window).scroll(function() {
     var winpos;
     winpos = $(window).scrollTop();
+    if (winpos >= 170) {
+      $('.coffee-link').hide();
+    } else {
+      $('.coffee-link').show();
+    }
     if (winpos >= position.top) {
       fix_div.addClass('fixed-header-bar');
       $('#blank_div').height(300);
