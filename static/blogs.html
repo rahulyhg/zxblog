@@ -35,6 +35,9 @@
           {{$post.title}}
         </a>
       </div>
+      <div class="post-list-item-thumbnail" ng-show="$post.thumbnail">
+          <img src="{{$post.thumbnail}}" class="" alt="" />
+      </div>
       <div class="post-list-item-content">
         {{$post.subtitle || 'update your subtitle'}}
       </div>
