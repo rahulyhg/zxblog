@@ -3,7 +3,7 @@
 .ver-mid-wrapper .ver-mid-item{display:inline-block;vertical-align:middle}
 .rounded-corner{-moz-border-radius:5px;border-radius:5px}
 body{margin:0}
-body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gill Sans MT","Myriad Pro",Myriad,"DejaVu Sans Condensed","Liberation Sans","Nimbus Sans L",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif}
+body,a,span{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gill Sans MT","Myriad Pro",Myriad,"DejaVu Sans Condensed","Liberation Sans","Nimbus Sans L",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif}
 .pg-item-box{width:100%;min-width:960px;background-color:#fff;}
 .pg-item-box .pg-item{margin:auto;width:960px}
 .ng-view-box{clear:both}
@@ -87,13 +87,25 @@ body,a{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gil
 .post-nav .next-post a:before{content:">"}
 .post-nav .prev-post a:before{content:"<"}
 .post-nav:hover{background-color:#fcdd4a}
-.cover-page{margin:auto;width:620px;}
+.cover-page{letter-spacing:1px;margin:auto;width:620px;}
 .cover-page .pot-layer{width:100%;height:470px}
 .cover-page .loc-layer{height:30px;width:180px;background:url("/static/imgs/icons.png") 0 -1192px;margin:18px 0 0 18px}
-.cover-page .couple{position:relative;top:-100px;left:240px;}
-.cover-page .couple >div{width:200px;float:left;}
-.cover-page .couple >div:hover >div{opacity:.4}
+.cover-page .couple{position:relative;top:-100px;left:240px;font-size:14px;}
+.cover-page .couple >div{width:200px;float:left;cursor:pointer;}
+.cover-page .couple >div:hover span{text-decoration:underline}
+.cover-page .couple >div .c-drop{width:20px;height:20px;margin:5px auto 5px auto}
 .cover-page .couple >div .c-intro{width:100%;}
 .cover-page .couple >div .c-intro >span{display:table;margin:auto}
-.cover-page .couple >div .c-intro .c-name{margin-bottom:20px;color:#f00}
-.cover-page .couple .c-left{border-right:#808080 solid 1px}
+.cover-page .couple >div .c-intro .c-name{margin-bottom:20px}
+.cover-page .couple >div .c-header .header-holder{width:66px;height:66px;margin:11px auto 25px auto}
+.cover-page .couple .c-normal .c-name{color:#de5b38}
+.cover-page .couple .c-normal span{color:#313131}
+.cover-page .couple .c-normal .c-l-header .header-holder{background:url("/static/imgs/ZC100.png") 0 0}
+.cover-page .couple .c-normal .c-r-header .header-holder{background:url("/static/imgs/ZX100.png") 0 0}
+.cover-page .couple .c-normal .c-drop{background:url("/static/imgs/icons.png") 6px -1248px}
+.cover-page .couple .c-unhover .c-name{color:#eead9b}
+.cover-page .couple .c-unhover span{color:#989898}
+.cover-page .couple .c-unhover .c-l-header .header-holder{background:url("/static/imgs/ZC50.png") 0 0}
+.cover-page .couple .c-unhover .c-r-header .header-holder{background:url("/static/imgs/ZX50.png") 0 0}
+.cover-page .couple .c-unhover .c-drop{background:url("/static/imgs/icons.png") -12px -1248px}
+.cover-page .couple .c-left .c-intro{border-right:#e2e2e2 solid 1px}

@@ -1,7 +1,7 @@
 @import 'define'
 body
   margin 0
-body, a
+body, a, span
   font-family Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif
 .pg-item-box
   width 100%
@@ -314,6 +314,7 @@ body, a
     background-color header-bar-hover-color
 
 .cover-page
+  letter-spacing 1px
   margin auto
   width 620px
   .pot-layer
@@ -328,11 +329,18 @@ body, a
     position relative
     top -100px
     left 240px
+    font-size 14px
     >div
       width 200px
       float left
-      &:hover >div
-        opacity 0.4
+      cursor pointer
+      &:hover span
+        text-decoration underline
+      .c-drop
+        //outline show-outline
+        width 20px
+        height 20px
+        margin 5px auto 5px auto
       .c-intro
         width 100%
         >span
@@ -340,6 +348,32 @@ body, a
           margin auto
         .c-name
           margin-bottom 20px
-          color red
-    .c-left
-      border-right gray solid 1px
+      .c-header .header-holder
+        width 66px
+        height 66px
+        margin 11px auto 25px auto
+    .c-normal
+      .c-name
+        color #de5b38
+      span
+        color #313131
+      .c-l-header .header-holder
+        background url(/static/imgs/ZC100.png) 0 0
+      .c-r-header .header-holder
+        background url(/static/imgs/ZX100.png) 0 0
+      .c-drop
+        background url(/static/imgs/icons.png) 6px -1248px
+    .c-unhover
+      .c-name
+        color #eead9b
+      span
+        color #989898
+      .c-l-header .header-holder
+        background url(/static/imgs/ZC50.png) 0 0
+      .c-r-header .header-holder
+        background url(/static/imgs/ZX50.png) 0 0
+      .c-drop
+        background url(/static/imgs/icons.png) -12px -1248px
+    .c-left .c-intro
+      border-right #e2e2e2 solid 1px
+        
