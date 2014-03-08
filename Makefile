@@ -6,7 +6,8 @@ COFFEE_DIR = static/coffee/
 .PHONY: all css js pub release clean
 all: js css
 css:
-	node ~/node_modules/stylus/bin/stylus -c -o ${CSS_DIR} ${STYLUS_DIR}*.styl
+	node ~/node_modules/stylus/bin/stylus -c -o ${CSS_DIR} ${STYLUS_DIR}zx.styl
+	node ~/node_modules/stylus/bin/stylus -c -o ${CSS_DIR} ${STYLUS_DIR}zc.styl
 
 js:
 	node ~/node_modules/coffee-script/bin/coffee -o ${JS_DIR} -cb ${COFFEE_DIR}*.coffee

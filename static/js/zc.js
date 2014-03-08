@@ -2,7 +2,7 @@
 var page_generator, sys_cfg;
 
 sys_cfg = {
-  about_url: '/static/about.html',
+  about_url: '/zc/about.html',
   portfolio_url: '/static/portfolio.html',
   blogs_url: '/static/blogs.html',
   post_url: '/static/post.html',

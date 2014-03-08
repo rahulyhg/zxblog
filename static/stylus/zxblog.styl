@@ -1,10 +1,9 @@
-@import 'define'
 body
   margin 0
   a.coffee-link
     width 26px
     height 40px
-    background url(/static/imgs/icons.png) -0px -312px
+    background url(/static/imgs/icons.png) coffee-link-pos
     float left
     position fixed
     top 34px
@@ -50,11 +49,11 @@ body, a, span
     height 42px
     width 296px
   .header-bar-logo-normal
-    background url(/static/imgs/icons.png) -0px -263px
+    background url(/static/imgs/icons.png) header-bar-logo-pos
     &:hover
-      background url(/static/imgs/icons.png) -0px -218px
+      background url(/static/imgs/icons.png) header-bar-logo-hover-pos
   .header-bar-logo-about
-    background url(/static/imgs/icons.png) -0px -218px
+    background url(/static/imgs/icons.png) header-bar-logo-about-pos
   .header-bar-link-active
     color header-bar-hover-color
   .header-bar-link-hib
@@ -75,13 +74,13 @@ body, a, span
 
 .footer-bar-box
   height footer-bar-ht
-  background-color header-bar-bg
+  background-color footer-bar-bg
   letter-spacing 1px
   .footer-bar a
     color header-bar-color
     text-decoration none
     &:hover
-      color header-bar-hover-color
+      color footer-bar-hover-color
       text-decoration none
   .footer-bar
     .lk-dividor
@@ -155,7 +154,8 @@ body, a, span
 
 .posts-list
   &:hover
-    background-color cup-bar-bg
+    color cup-bar-bg
+  //  background-color cup-bar-bg
   .posts-list-item
     padding 40px 0
     .posts-pg-left
@@ -170,7 +170,7 @@ body, a, span
         text-transform capitalize
         font-size 28px
         text-decoration none
-        color header-bar-bg
+        color posts-list-title-color
       .post-list-item-thumbnail
         margin 10px 0 0 0
         img
@@ -198,12 +198,12 @@ body, a, span
     color header-bar-bg
     letter-spacing 1px
     &.pg-current
-      background-color cup-bar-bg
+      background-color btn-bg-hover
       text-decoration underline
     &.pg-normal
       background-color btn-bg-dis
       &:hover
-        background-color cup-bar-bg
+        background-color btn-bg-hover
         text-decoration underline
 
 
@@ -228,12 +228,12 @@ body, a, span
         line-height 40px
         color header-bar-bg
         &.pg-current
-          background-color cup-bar-bg
+          background-color btn-bg-hover
           text-decoration underline
         &.pg-normal
           background-color btn-bg-dis
           &:hover
-            background-color cup-bar-bg
+            background-color btn-bg-hover
             text-decoration underline
 
 .post-page
@@ -246,7 +246,7 @@ body, a, span
     margin-bottom 30px
     .post-title
       font-size 28px
-      color header-bar-bg
+      color post-page-title-color
       text-transform capitalize
       margin-bottom 20px
     .post-date-cat
@@ -301,11 +301,11 @@ body, a, span
         height 40px
         width 196px
         border none
-        background url(/static/imgs/icons.png) -0px -362px
+        background url(/static/imgs/icons.png) post-comment-btn-pos
         &:disabled
-          background url(/static/imgs/icons.png) -206px -362px
+          background url(/static/imgs/icons.png) post-comment-btn-hover-pos
         &:hover
-          background url(/static/imgs/icons.png) -206px -362px
+          background url(/static/imgs/icons.png) post-comment-btn-hover-pos
       .button-div
         margin-top 30px
 
@@ -314,7 +314,7 @@ body, a, span
   a
     font-size 18px
     text-decoration none
-    color header-bar-bg
+    color post-nav-color
     font-weight bold
     line-height 18px
     &:before
@@ -324,7 +324,7 @@ body, a, span
   .prev-post a:before
     content "<"
   &:hover
-    background-color header-bar-hover-color
+    background-color post-nav-bg
 
 .cover-page
   letter-spacing 1px
