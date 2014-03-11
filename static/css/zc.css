@@ -41,7 +41,7 @@ body,a,span{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans"
 .ports .port .port-hover .port-goto a:hover{background:url("/static/imgs/icons.png") -184px -460px}
 .posts-pg-left{width:360px;display:inline-block;float:left}
 .posts-pg-right{width:600px;display:inline-block}
-.posts-list:hover{color:#fff}
+.posts-list:hover{background-color:#f9f9f9}
 .posts-list .posts-list-item{padding:40px 0;}
 .posts-list .posts-list-item .posts-pg-left{letter-spacing:1px;}
 .posts-list .posts-list-item .posts-pg-left span{font-size:14px}
@@ -112,3 +112,4 @@ body,a,span{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans"
 .cover-page .couple .c-unhover .c-r-header .header-holder{background:url("/static/imgs/ZX50.png") 0 0}
 .cover-page .couple .c-unhover .c-drop{background:url("/static/imgs/icons.png") -12px -1248px}
 .cover-page .couple .c-left .c-intro{border-right:#e2e2e2 solid 1px}
+.cup-bar-logo-zc{margin:auto;width:276px;height:302px;background:url("/static/imgs/icons.png") 0 -562px;position:fixed;top:0;left:50%;margin-top:30px;margin-left:-138px}

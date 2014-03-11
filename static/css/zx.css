@@ -41,7 +41,7 @@ body,a,span{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans"
 .ports .port .port-hover .port-goto a:hover{background:url("/static/imgs/icons.png") -184px -460px}
 .posts-pg-left{width:360px;display:inline-block;float:left}
 .posts-pg-right{width:600px;display:inline-block}
-.posts-list:hover{color:#fcdd4a}
+.posts-list:hover{background-color:#f9f9f9}
 .posts-list .posts-list-item{padding:40px 0;}
 .posts-list .posts-list-item .posts-pg-left{letter-spacing:1px;}
 .posts-list .posts-list-item .posts-pg-left span{font-size:14px}

@@ -2,7 +2,7 @@
 var page_generator, sys_cfg;
 
 sys_cfg = {
-  about_url: '/zc/about.html',
+  about_url: '/static/about.html',
   portfolio_url: '/static/portfolio.html',
   blogs_url: '/static/blogs.html',
   post_url: '/static/post.html',
@@ -230,16 +230,14 @@ $(document).ready(function() {
     }
     if (winpos >= position.top) {
       fix_div.addClass('fixed-header-bar');
-      $('#blank_div').height(270);
+      $('#blank_div').height(300);
       $('.header-bar-links').removeClass('header-bar-links-unfix');
-      $('.header-bar-box').height(60);
-      return $('.cup-bar-logo-zc:first').css('top', -332 + 'px');
+      return $('.header-bar-box').height(60);
     } else {
       fix_div.removeClass('fixed-header-bar');
-      $('#blank_div').height(210);
+      $('#blank_div').height(240);
       $('.header-bar-links').addClass('header-bar-links-unfix');
-      $('.header-bar-box').height(120);
-      return $('.cup-bar-logo-zc:first').css('top', -332 * winpos / 180 + 'px');
+      return $('.header-bar-box').height(120);
     }
   });
 });

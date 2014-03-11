@@ -14,6 +14,8 @@ js:
 
 pub:
 	rsync -avz ./static/ nimei.org:/home/liszt/work/zx/static 
+	rsync -avz ./zx/ nimei.org:/home/liszt/work/zx/zx 
+	rsync -avz ./zc/ nimei.org:/home/liszt/work/zx/zc
 	rsync -avz ./wp-content/plugins/ nimei.org:/home/liszt/work/zx/wp-content/plugins
 	rsync -avz ./index.html nimei.org:/home/liszt/work/zx/
 
