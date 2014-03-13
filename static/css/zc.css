@@ -113,3 +113,5 @@ body,a,span{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans"
 .cover-page .couple .c-unhover .c-drop{background:url("/static/imgs/icons.png") -12px -1248px}
 .cover-page .couple .c-left .c-intro{border-right:#e2e2e2 solid 1px}
 .cup-bar-logo-zc{margin:auto;width:276px;height:302px;background:url("/static/imgs/icons.png") 0 -562px;position:fixed;top:0;left:50%;margin-top:30px;margin-left:-138px}
+.zc-email-link{width:250px;height:350px;position:relative;top:-380px;left:630px;display:inline-block}
+.about-page{height:845px}
