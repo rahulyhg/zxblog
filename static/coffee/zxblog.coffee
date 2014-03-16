@@ -81,6 +81,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
         scope.$watch '$post', (n_val, o_val) ->
             if n_val and (not o_val)
                 element.html n_val.content_display
+                $(window).scrollTop 0
                 $('.post-page .post-content a>img').each ()->
                     $(this).parent().fancybox()
     ])

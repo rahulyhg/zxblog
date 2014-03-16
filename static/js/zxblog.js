@@ -97,6 +97,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
       return scope.$watch('$post', function(n_val, o_val) {
         if (n_val && (!o_val)) {
           element.html(n_val.content_display);
+          $(window).scrollTop(0);
           return $('.post-page .post-content a>img').each(function() {
             return $(this).parent().fancybox();
           });
