@@ -40,6 +40,9 @@ body, a, span
   position fixed
   top 0
   z-index 1000
+.unfix-header-bar
+  position fixed
+  top 240px
 
 .header-bar-box
   height header-bar-ht
@@ -58,8 +61,8 @@ body, a, span
     color header-bar-hover-color
   .header-bar-link-hib
     color header-bar-color
-  .header-bar-links-unfix
-    margin-top 30px
+  //.header-bar-links-unfix
+  //  margin-top 30px
   .header-bar-links
     float right
     line-height header-bar-ht - 60px
@@ -68,14 +71,19 @@ body, a, span
     font-weight bold
     font-size 14px
     letter-spacing 1px
+    position relative
+    top 50%
+    margin-top -30px
     &:hover
       color header-bar-hover-color
-      text-decoration underline
+      //text-decoration underline
 
 .footer-bar-box
   height footer-bar-ht
   background-color footer-bar-bg
   letter-spacing 1px
+  .footer-bar-link-list
+    line-height 150%
   .footer-bar a
     color header-bar-color
     text-decoration none
@@ -104,9 +112,9 @@ body, a, span
       width 138px
       margin auto
       height 40px
-      background url(/static/imgs/icons.png) -0px -411px
+      background url(/static/imgs/icons.png) -0px -412px
       &:hover
-        background url(/static/imgs/icons.png) -148px -411px
+        background url(/static/imgs/icons.png) -148px -412px
 
 .ports
   margin-right - port-space
@@ -140,10 +148,9 @@ body, a, span
           width 176px
           margin auto
           height 40px
-          background url(/static/imgs/icons.png) 0px -460px
+          background url(/static/imgs/icons.png) port-goto-bg-pos
           &:hover
-            background url(/static/imgs/icons.png) -184px -460px
-
+            background url(/static/imgs/icons.png) port-goto-hover-bg-pos
 .posts-pg-left
   width posts-list-left
   display inline-block
@@ -181,29 +188,33 @@ body, a, span
 
 .post-cats
   height 120px
-  border-bottom 1px btn-bg-dis solid
+  border-bottom 1px #ebebeb solid
   >div
     height 120px
     float left
   a.post-cat-item
     margin 40px 20px 0 0
-    padding 0 10px
+    padding post-cat-padding
     display inline-block
     line-height 40px
     height 40px
     font-size 14px
     text-decoration none
     line-height 40px
-    color header-bar-bg
+    color cat-item-color
     letter-spacing 1px
+    text-decoration none
     &.pg-current
-      background-color btn-bg-hover
-      text-decoration underline
+      background-color cat-item-hover-bg-color
+      color cat-item-hover-color
     &.pg-normal
-      background-color btn-bg-dis
+      background-color cat-item-bg-color
+      &:visited
+        color cat-item-color
       &:hover
-        background-color btn-bg-hover
-        text-decoration underline
+        background-color cat-item-hover-bg-color
+        color cat-item-hover-color
+        //text-decoration underline
 
 
 .pages-nav
@@ -225,19 +236,22 @@ body, a, span
         display block
         text-decoration none
         line-height 40px
-        color header-bar-bg
         &.pg-current
           background-color btn-bg-hover
-          text-decoration underline
+          color btn-hover-color
+          //text-decoration underline
         &.pg-normal
           background-color btn-bg-dis
+          color btn-color
           &:hover
+            color btn-hover-color
             background-color btn-bg-hover
-            text-decoration underline
+            //text-decoration underline
 
 .post-page
-  letter-spacing 1px
-  font-size 14px
+  letter-spacing 1.5px
+  font-size 18px
+  line-height 150%
   padding 40px 0
   overflow hidden
   .post-info
@@ -252,7 +266,10 @@ body, a, span
       font-size 14px
       text-transform capitalize
       .post-cat>a
-        color header-bar-hover-color
+        text-decoration none
+        color post-page-title-color
+        &:hover
+          color header-bar-hover-color
       .post-date
         margin-left 40px
   .post-content
@@ -274,6 +291,8 @@ body, a, span
       margin-bottom 40px
       line-height 14px
       font-size 14px
+      max-width 720px
+      word-break break-all
       .comment-info
         font-style italic
         margin-top 20px
@@ -285,6 +304,9 @@ body, a, span
         height 200px
         width 400px
         font-size 14px
+        border 1px solid #ebebeb
+        &:focus
+          border 1px solid #313131
       label
         margin 20px 0
         font-size 18px
@@ -295,6 +317,9 @@ body, a, span
         font-size 18px
         width 400px
         height 50px
+        border 1px solid #ebebeb
+        &:focus
+          border 1px solid #313131
       button
         display block
         height 40px
@@ -302,9 +327,12 @@ body, a, span
         border none
         background url(/static/imgs/icons.png) post-comment-btn-pos
         &:disabled
-          background url(/static/imgs/icons.png) post-comment-btn-hover-pos
+          background url(/static/imgs/icons.png) post-comment-btn-dis-pos
+          &:hover
+            background url(/static/imgs/icons.png) post-comment-btn-dis-pos
         &:hover
           background url(/static/imgs/icons.png) post-comment-btn-hover-pos
+          cursor pointer
       .button-div
         margin-top 30px
 
@@ -323,7 +351,7 @@ body, a, span
   .prev-post a:before
     content "<"
   &:hover
-    background-color post-nav-bg
+    background-color posts-list-hover-bg
 
 .cover-page
   letter-spacing 1px
@@ -332,7 +360,7 @@ body, a, span
   position fixed
   left 50%
   top 50%
-  margin -320px 0 0 -336px
+  margin -320px 0 0 -340px
   .pot-layer
     width 100%
     height 470px
@@ -344,14 +372,12 @@ body, a, span
   .couple
     position relative
     top -110px
-    left 225px
+    left 220px
     font-size 14px
     >div
       width 200px
       float left
       cursor pointer
-      &:hover span
-        text-decoration underline
       .c-drop
         width 20px
         height 20px
@@ -392,3 +418,15 @@ body, a, span
     .c-left .c-intro
       border-right #e2e2e2 solid 1px
         
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover
+    outline 0px !important
+    -webkit-appearance none
+ 

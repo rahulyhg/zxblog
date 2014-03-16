@@ -17,16 +17,9 @@
     </head>
     <body>
         <div>
-        <div id="blank_div" class="pg-item-box" style="height: 240px; background-color: rgba(0,0,0,0);"></div>
-        <div class="pg-item-box cup-bar-box">
-            <div class="pg-item cup-bar">
-                <div class="cup-bar-logo">
-                    
-                </div>
-            </div>
+        <div id="blank_div" class="pg-item-box" style="height: 360px; background-color: rgba(0,0,0,0);">
         </div>
-          
-        <div class="pg-item-box header-bar-box" id="header-bar-box" ng-controller="MainCntl">
+        <div class="pg-item-box header-bar-box unfix-header-bar" id="header-bar-box" ng-controller="MainCntl">
           <div class="pg-item header-bar ver-mid-wrapper">
             <a class="ver-mid-item header-bar-logo {{$header_logo_cls}}"
                href="#/about">
@@ -37,6 +30,14 @@
             <a href="#/portfolio/1" class="header-bar-links header-bar-links-unfix" ng-class="{false: 'header-bar-link-hib', true: 'header-bar-link-active'}[$pg_type=='portfolio']">PORTFOLIO</a>
           </div>
         </div>
+        <div class="pg-item-box cup-bar-box">
+            <div class="pg-item cup-bar">
+                <div class="cup-bar-logo">
+                    
+                </div>
+            </div>
+        </div>
+          
         <div class="pg-item-box ng-view-box" ng-view>
         </div>
         <div class="pg-item-box footer-bar-box">
@@ -45,13 +46,12 @@
               <div class="footer-bar-link-list">
                 <a href="" target="_blank">Facebook</a><span class="lk-dividor">|</span>
                 <a href="" target="_blank">Twitter</a><span class="lk-dividor">|</span>
-                <a href="" target="_blank">Douban</a><span class="lk-dividor">|</span>
                 <a href="" target="_blank">Behance</a><span class="lk-dividor">|</span>
                 <a href="" target="_blank">G+</a><span class="lk-dividor">|</span>
                 <a href="" target="_blank">E-mail</a>
               </div>
               <div class="footer-bar-copyright">
-                &copy; Copyright 2013 Chi &amp; Xuan
+                &copy; Chi &amp; Xuan
               </div>
             </div>
           </div>

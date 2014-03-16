@@ -3,8 +3,8 @@ sys_cfg =
     portfolio_url: '/static/portfolio.html'
     blogs_url: '/static/blogs.html'
     post_url: '/static/post.html'
-    portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=15'
-    posts_data_url: '/wp_api/v1/posts?per_page=2'
+    portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=12'
+    posts_data_url: '/wp_api/v1/posts?per_page=10'
     post_data_url: '/wp_api/v1/posts/:postid'
     comments_data_url: '/wp_api/v1/posts/:postid/comments?paged=1&per_page=5'
     cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=4&orderby=slug'
@@ -115,7 +115,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
         $scope.$ports = ports_info.posts
         $scope.$port_count = ports_info.found
         $scope.$current_page = $routeParams.page
-        $scope.$pgs = page_generator ports_info.found, 15, $routeParams.page
+        $scope.$pgs = page_generator ports_info.found, 12, $routeParams.page
 
 .factory('portFactory', ['$resource', ($resource) ->
     $resource sys_cfg.portfolio_data_url, null, {}])
@@ -153,6 +153,7 @@ page_generator = (total, per, current) ->
 
 $(document).ready ()->
     fix_div = $ '#header-bar-box'
+    blank_div = $ '#blank_div'
     position = fix_div.position()
     $(window).scroll ()->
         winpos = $(window).scrollTop()
@@ -160,16 +161,44 @@ $(document).ready ()->
             $('.coffee-link').hide()
         else
             $('.coffee-link').show()
-        if winpos >= position.top
-            fix_div.addClass 'fixed-header-bar'
-            $('#blank_div').height 270
-            $('.header-bar-links').removeClass 'header-bar-links-unfix'
-            $('.header-bar-box').height 60
+        sys_cfg.shrink_header ?= false
+        if winpos >= 210 #position.top
             $('.cup-bar-logo-zc:first').css 'top', -332 + 'px'
+            if not sys_cfg.strink_header
+                if fix_div.height() < 61
+                    console.log 'hohoho'
+                    return ''
+                sys_cfg.strink_header = true
+                fix_div.css 'top', 0
+                ani_pam =
+                    height: 60
+                ani_op =
+                    duration: sys_cfg.ani_dur
+                    progress: () ->
+                        $('#blank_div').height 240+$('.header-bar-box').height()+'px'
+                    complete: () ->
+                        sys_cfg.strink_header = false
+                fix_div.animate ani_pam, ani_op
         else
-            fix_div.removeClass 'fixed-header-bar'
-            $('#blank_div').height 210
-            $('.header-bar-links').addClass 'header-bar-links-unfix'
-            $('.header-bar-box').height 120
             $('.cup-bar-logo-zc:first').css 'top', -332*winpos/180 + 'px'
-            
+            if winpos < 1
+                winpos = 0
+            if 1
+                ani_pam =
+                    height: 120
+                ani_op =
+                    duration: 30
+                    progress: () ->
+                        fh = fix_div.height()
+                        btop = 210+fh+'px'
+                        blank_div.height btop
+                        fix_div.css 'top', 210-winpos+'px'
+                    complete: () ->
+                        sys_cfg.strink_header = false
+                if fix_div.height() > 119
+                    fix_div.css 'top', 210-winpos+'px'
+                else
+                    sys_cfg.strink_header = true
+                    fix_div.stop()
+                    fix_div.animate ani_pam, ani_op
+

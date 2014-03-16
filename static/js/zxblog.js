@@ -6,11 +6,12 @@ sys_cfg = {
   portfolio_url: '/static/portfolio.html',
   blogs_url: '/static/blogs.html',
   post_url: '/static/post.html',
-  portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=15',
-  posts_data_url: '/wp_api/v1/posts?per_page=2',
+  portfolio_data_url: '/wp_api/v1/posts?category_name=portfolio&per_page=12',
+  posts_data_url: '/wp_api/v1/posts?per_page=10',
   post_data_url: '/wp_api/v1/posts/:postid',
   comments_data_url: '/wp_api/v1/posts/:postid/comments?paged=1&per_page=5',
-  cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=4&orderby=slug'
+  cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=4&orderby=slug',
+  ani_dur: 300
 };
 
 angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(function($routeProvider) {
@@ -159,7 +160,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
     $scope.$ports = ports_info.posts;
     $scope.$port_count = ports_info.found;
     $scope.$current_page = $routeParams.page;
-    return $scope.$pgs = page_generator(ports_info.found, 15, $routeParams.page);
+    return $scope.$pgs = page_generator(ports_info.found, 12, $routeParams.page);
   });
 }).factory('portFactory', [
   '$resource', function($resource) {
@@ -217,27 +218,71 @@ page_generator = function(total, per, current) {
 };
 
 $(document).ready(function() {
-  var fix_div, position;
+  var blank_div, fix_div, position;
   fix_div = $('#header-bar-box');
+  blank_div = $('#blank_div');
   position = fix_div.position();
-  return $(window).scroll(function() {
-    var winpos;
+  return $(window).scroll(function(event) {
+    var ani_op, ani_pam, winpos, _ref;
     winpos = $(window).scrollTop();
     if (winpos >= 170) {
       $('.coffee-link').hide();
     } else {
       $('.coffee-link').show();
     }
-    if (winpos >= position.top) {
-      fix_div.addClass('fixed-header-bar');
-      $('#blank_div').height(300);
-      $('.header-bar-links').removeClass('header-bar-links-unfix');
-      return $('.header-bar-box').height(60);
+    if ((_ref = sys_cfg.shrink_header) == null) {
+      sys_cfg.shrink_header = false;
+    }
+    if (winpos >= 240) {
+      if (!sys_cfg.strink_header) {
+        if (fix_div.height() < 61) {
+          return '';
+        }
+        sys_cfg.strink_header = true;
+        fix_div.css('top', 0);
+        ani_pam = {
+          height: 60
+        };
+        ani_op = {
+          duration: sys_cfg.ani_dur,
+          progress: function() {
+            return $('#blank_div').height(240 + $('.header-bar-box').height() + 'px');
+          },
+          complete: function() {
+            return sys_cfg.strink_header = false;
+          }
+        };
+        return fix_div.animate(ani_pam, ani_op);
+      }
     } else {
-      fix_div.removeClass('fixed-header-bar');
-      $('#blank_div').height(240);
-      $('.header-bar-links').addClass('header-bar-links-unfix');
-      return $('.header-bar-box').height(120);
+      if (winpos < 1) {
+        winpos = 0;
+      }
+      if (1) {
+        ani_pam = {
+          height: 120
+        };
+        ani_op = {
+          duration: 30,
+          progress: function() {
+            var btop, fh;
+            fh = fix_div.height();
+            btop = 240 + fh + 'px';
+            blank_div.height(btop);
+            return fix_div.css('top', 240 - winpos + 'px');
+          },
+          complete: function() {
+            return sys_cfg.strink_header = false;
+          }
+        };
+        if (fix_div.height() > 119) {
+          return fix_div.css('top', 240 - winpos + 'px');
+        } else {
+          sys_cfg.strink_header = true;
+          fix_div.stop();
+          return fix_div.animate(ani_pam, ani_op);
+        }
+      }
     }
   });
 });
