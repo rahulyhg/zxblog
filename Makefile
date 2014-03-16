@@ -13,6 +13,7 @@ js:
 	node ~/node_modules/coffee-script/bin/coffee -o ${JS_DIR} -cb ${COFFEE_DIR}*.coffee
 
 pub:
+	git push origin master
 	rsync -avz ./static/ nimei.org:/home/liszt/work/zx/static 
 	rsync -avz ./zx/ nimei.org:/home/liszt/work/zx/zx 
 	rsync -avz ./zc/ nimei.org:/home/liszt/work/zx/zc

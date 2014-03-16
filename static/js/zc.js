@@ -248,7 +248,7 @@ $(document).ready(function() {
         ani_op = {
           duration: sys_cfg.ani_dur,
           progress: function() {
-            return $('#blank_div').height(240 + $('.header-bar-box').height() + 'px');
+            return $('#blank_div').height(210 + $('.header-bar-box').height() + 'px');
           },
           complete: function() {
             return sys_cfg.strink_header = false;

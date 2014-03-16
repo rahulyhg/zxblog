@@ -176,7 +176,7 @@ $(document).ready ()->
                 ani_op =
                     duration: sys_cfg.ani_dur
                     progress: () ->
-                        $('#blank_div').height 240+$('.header-bar-box').height()+'px'
+                        $('#blank_div').height 210+$('.header-bar-box').height()+'px'
                     complete: () ->
                         sys_cfg.strink_header = false
                 fix_div.animate ani_pam, ani_op

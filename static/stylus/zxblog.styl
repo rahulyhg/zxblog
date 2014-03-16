@@ -21,7 +21,6 @@ body, a, span
 .ng-view-box
     clear both
 
-
 .cup-bar-box
   height cup-bar-ht
   background-color cup-bar-bg
@@ -61,8 +60,6 @@ body, a, span
     color header-bar-hover-color
   .header-bar-link-hib
     color header-bar-color
-  //.header-bar-links-unfix
-  //  margin-top 30px
   .header-bar-links
     float right
     line-height header-bar-ht - 60px
@@ -163,7 +160,13 @@ body, a, span
   &:hover
     background-color posts-list-hover-bg
   .posts-list-item
-    padding 40px 0
+    padding 30px 0
+    table
+      border-collapse collapse
+      border-spacing 0
+      tr, td, th
+        padding 0
+        margin 0
     .posts-pg-left
       letter-spacing 1px
       span
@@ -178,12 +181,12 @@ body, a, span
         text-decoration none
         color posts-list-title-color
       .post-list-item-thumbnail
-        margin 10px 0 0 0
+        margin 30px 0 0 0
         img
           max-width 100%
       .post-list-item-content
         font-size 14px
-        margin-top 20px
+        margin-top 30px
         
 
 .post-cats
@@ -223,7 +226,6 @@ body, a, span
   .pages
     margin auto
     height 40px
-    #outline show-outline
     display inline-block
     .pg-item
       width 40px
