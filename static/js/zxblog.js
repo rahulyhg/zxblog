@@ -43,7 +43,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
     $scope.$posts = posts_info.posts;
     $scope.$current_page = $routeParams.page;
     $scope.$catname = $routeParams.catname;
-    return $scope.$pgs = page_generator(posts_info.found, 2, $routeParams.page);
+    return $scope.$pgs = page_generator(posts_info.found, 5, $routeParams.page);
   });
 }).factory('postsFactory', [
   '$resource', function($resource) {

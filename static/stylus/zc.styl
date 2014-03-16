@@ -11,14 +11,38 @@
   left 50%
   margin-top 30px
   margin-left -138px
+  z-index 150
 
-.zc-email-link
-  width 250px
-  height 350px
-  position relative
-  top -380px
-  left 630px
-  display block
+.header-bar-box
+  z-index 100
 
 .about-page
-  height 845px
+  .about-item
+    height 815px
+    max-height 815px
+    background url(/static/imgs/abouthim.png)
+    >a
+      position relative
+      width 246px
+      height 380px
+      background-color rgba(0, 0, 0, 0)
+      display inline-block
+    .abouthim1
+      left 375px
+      top 4px
+      &:hover
+        background url(/static/imgs/abouthim1.png)
+    .abouthim2
+      &:hover
+        background url(/static/imgs/abouthim2.png)
+      left 712px - 246px
+      top 4px
+    .abouthim3
+      &:hover
+        background url(/static/imgs/abouthim3.png)
+      left -495px
+      top 434px
+    .zc-email-link
+      top 48px
+      left 712px
+

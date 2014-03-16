@@ -42,7 +42,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
         $scope.$posts = posts_info.posts
         $scope.$current_page = $routeParams.page
         $scope.$catname = $routeParams.catname
-        $scope.$pgs = page_generator posts_info.found, 2, $routeParams.page
+        $scope.$pgs = page_generator posts_info.found, 5, $routeParams.page
         
 .factory('postsFactory', ['$resource', ($resource) ->
     $resource sys_cfg.posts_data_url, null, {}])
