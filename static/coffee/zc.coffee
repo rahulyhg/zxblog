@@ -47,6 +47,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
 .controller('PostCtrl', ($rootScope, $scope, $routeParams, postFactory, commentsFactory)->
     $rootScope.$pg_type = 'post'
     $rootScope.$header_logo_cls = 'header-bar-logo-normal'
+    $(window).scrollTop 0
 
     #post comment related
     $scope.save = () ->

@@ -53,6 +53,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
   var comments, post_info;
   $rootScope.$pg_type = 'post';
   $rootScope.$header_logo_cls = 'header-bar-logo-normal';
+  $(window).scrollTop(0);
   $scope.save = function() {
     var coll, com_param, eat, k, q, _i, _len, _ref;
     $scope.$comment.date = 'Just now';

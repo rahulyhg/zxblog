@@ -12,14 +12,14 @@ css:
 js:
 	node ~/node_modules/coffee-script/bin/coffee -o ${JS_DIR} -cb ${COFFEE_DIR}*.coffee
 
-pub:
-	git push origin master
+put:
 	rsync -avz ./static/ nimei.org:/home/liszt/work/zx/static 
 	rsync -avz ./zx/ nimei.org:/home/liszt/work/zx/zx 
 	rsync -avz ./zc/ nimei.org:/home/liszt/work/zx/zc
 	rsync -avz ./wp-content/plugins/ nimei.org:/home/liszt/work/zx/wp-content/plugins
 	rsync -avz ./index.html nimei.org:/home/liszt/work/zx/
-
+pub:put
+	git push origin master
 release:
 	- rm -rf release/*
 	tar --exclude release --exclude design --exclude coffee --exclude stylus --exclude uploads/imgs --exclude logs --exclude=user_guide -czvf release/dp.tar.gz * >/dev/null 2>&1
