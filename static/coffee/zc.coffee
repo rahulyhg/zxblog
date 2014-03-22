@@ -125,7 +125,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
 .controller 'AboutCtrl', ($rootScope, $scope) ->
     $rootScope.$pg_type = 'about'
     $rootScope.$header_logo_cls = 'header-bar-logo-about'
-    b = 2
+    $(window).scrollTop 0
 
 .controller 'MainCntl', ($rootScope, $scope) ->
     #$scope.$pg_type = 'portfolio'

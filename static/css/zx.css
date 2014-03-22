@@ -27,8 +27,8 @@ body,a,span{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans"
 .footer-bar-box .footer-bar a:hover{color:#fcdd4a;text-decoration:none}
 .footer-bar-box .footer-bar .lk-dividor{margin:0 10px;color:#6c6c6c}
 .footer-bar-box .footer-bar .footer-bar-copyright{color:#6c6c6c}
-.about-page{padding-bottom:40px;padding-top:40px;}
-.about-page .email-item .email-btn{display:block;position:relative;top:-187px;left:-11px;width:138px;margin:auto;height:40px;background:url("/static/imgs/icons.png") 0 -412px;}
+.about-page{padding-top:40px;}
+.about-page .email-item .email-btn{display:block;position:relative;top:-187px;left:-5px;width:148px;margin:auto;height:40px;background:url("/static/imgs/icons.png") 0 -412px;}
 .about-page .email-item .email-btn:hover{cursor:pointer;background:url("/static/imgs/icons.png") -148px -412px}
 .ports{margin-right:-90px;margin-top:40px;}
 .ports .port{width:240px;height:240px;display:inline-block;border:10px #e7e7e7 solid;margin:0 90px 70px 0;overflow:hidden;background-color:#e7e7e7;}

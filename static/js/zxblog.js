@@ -169,10 +169,9 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
     return $resource(sys_cfg.portfolio_data_url, null, {});
   }
 ]).controller('AboutCtrl', function($rootScope, $scope) {
-  var b;
   $rootScope.$pg_type = 'about';
   $rootScope.$header_logo_cls = 'header-bar-logo-about';
-  return b = 2;
+  return $(window).scrollTop(0);
 }).controller('MainCntl', function($rootScope, $scope) {
   var b;
   return b = 1;
