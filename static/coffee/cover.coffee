@@ -1,7 +1,7 @@
 $(document).ready ()->
     $('.cover-page .couple .c-left')
         .click () ->
-            window.location = '/zc'
+            window.location = 'chi.zhangs.me/zc'
         .mouseenter () ->
             tgt = $('.cover-page .couple .c-right:first')
             tgt.addClass 'c-unhover'
@@ -12,7 +12,7 @@ $(document).ready ()->
             tgt.removeClass 'c-unhover'
     $('.cover-page .couple .c-right')
         .click () ->
-            window.location = '/zx'
+            window.location = 'xuan.zhangs.me/zx'
         .mouseenter () ->
             tgt = $('.cover-page .couple .c-left:first')
             tgt.addClass 'c-unhover'
