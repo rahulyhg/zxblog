@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
   $('.cover-page .couple .c-left').click(function() {
-    return window.location = 'chi.zhangs.me/zc';
+    return window.location = 'http://chi.zhangs.me/zc';
   }).mouseenter(function() {
     var tgt;
     tgt = $('.cover-page .couple .c-right:first');
@@ -15,7 +15,7 @@ $(document).ready(function() {
     return tgt.removeClass('c-unhover');
   });
   return $('.cover-page .couple .c-right').click(function() {
-    return window.location = 'xuan.zhangs.me/zx';
+    return window.location = 'http://xuan.zhangs.me/zx';
   }).mouseenter(function() {
     var tgt;
     tgt = $('.cover-page .couple .c-left:first');
