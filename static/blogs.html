@@ -19,7 +19,7 @@
     <table cellspacing="0"><tr><td style="vertical-align: bottom;"> 
     <div class="posts-pg-left">
       <div class="post-list-item-attr">
-        <span class="post-list-item-cats" ng-repeat="($catid, $cate) in $post.taxonomies.category">
+        <span class="post-list-item-cats" ng-repeat="$cate in $post.taxonomies.category">
           <span class="post-list-item-cats-dividor" ng-show="$index">/</span>
           <span class="post-cat-item">{{$cate.name}}</span>
         </span>

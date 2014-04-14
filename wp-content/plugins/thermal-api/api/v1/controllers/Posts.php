@@ -319,7 +319,13 @@ class Posts {
 				$terms = get_the_terms( $post->ID, $taxonomy );
 				if ( !empty( $terms ) ) {
 					array_walk( $terms, array( __NAMESPACE__ . '\Terms', 'format' ), $state );
-					$post_taxonomies[$taxonomy] = $terms;
+                    ksort($terms);
+                    $tmp = array();
+                    foreach ($terms as $k=>$v)
+                    {
+                        $tmp[] = $v;
+                    }
+					$post_taxonomies[$taxonomy] = $tmp;
 				}
 			}
 
