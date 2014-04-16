@@ -2,17 +2,9 @@
 
 $(document).ready(function() {
   $('.cover-page .couple .c-left').click(function() {
-    return window.location = 'http://chi.zhangs.me/zc';
-  }).mouseenter(function(event) {
-    return $(event.target).css('margin-top', '-1px');
-  }).mouseleave(function(event) {
-    return $(event.target).css('margin-top', '0px');
+    return window.location = 'http://chi.zhangs.me/';
   });
   return $('.cover-page .couple .c-right').click(function() {
-    return window.location = 'http://xuan.zhangs.me/zx';
-  }).mouseenter(function(event) {
-    return $(event.target).css('margin-top', '-1px');
-  }).mouseleave(function(event) {
-    return $(event.target).css('margin-top', '0px');
+    return window.location = 'http://xuan.zhangs.me/';
   });
 });

@@ -15,7 +15,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
 
 .config ($routeProvider) ->
     $routeProvider
-        .when '/about',
+        .when '/',
             controller: 'AboutCtrl'
             templateUrl: sys_cfg.about_url
         .when '/portfolio/:page',
@@ -28,7 +28,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
             controller: 'PostCtrl'
             templateUrl: sys_cfg.post_url
         .otherwise
-            redirectTo: '/about'
+            redirectTo: '/'
 .controller 'BlogsCtrl', ($rootScope, $scope, $routeParams, postsFactory)->
     # ui related
     $rootScope.$pg_type = 'post'

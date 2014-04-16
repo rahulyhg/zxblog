@@ -14,7 +14,7 @@ sys_cfg = {
 };
 
 angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(function($routeProvider) {
-  return $routeProvider.when('/about', {
+  return $routeProvider.when('/', {
     controller: 'AboutCtrl',
     templateUrl: sys_cfg.about_url
   }).when('/portfolio/:page', {
@@ -27,7 +27,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
     controller: 'PostCtrl',
     templateUrl: sys_cfg.post_url
   }).otherwise({
-    redirectTo: '/about'
+    redirectTo: '/'
   });
 }).controller('BlogsCtrl', function($rootScope, $scope, $routeParams, postsFactory) {
   var cat_name, fat_param, posts_info;

@@ -20,16 +20,20 @@ put:
 	rsync -avz ./index.html nimei.org:/home/liszt/work/zx/
 	rsync -avz ./Makefile nimei.org:/home/liszt/work/zx/
 online:
+	rsync -avz ./index.html zhangs.me:/home/liszt/work/zhangs/
+	rsync -avz ./static/ zhangs.me:/home/liszt/work/zhangs/static 
+
 	rsync -avz ./static/ zhangs.me:/home/liszt/work/zx/static 
 	rsync -avz ./zx/ zhangs.me:/home/liszt/work/zx/zx 
 	rsync -avz ./zc/ zhangs.me:/home/liszt/work/zx/zc
 	rsync -avz ./wp-content/plugins/ zhangs.me:/home/liszt/work/zx/wp-content/plugins
-	rsync -avz ./index.html zhangs.me:/home/liszt/work/zx/
+	rsync -avz ./zx/index.html zhangs.me:/home/liszt/work/zx/
+
 	rsync -avz ./static/ zhangs.me:/home/liszt/work/zc/static 
 	rsync -avz ./zx/ zhangs.me:/home/liszt/work/zc/zx 
 	rsync -avz ./zc/ zhangs.me:/home/liszt/work/zc/zc
 	rsync -avz ./wp-content/plugins/ zhangs.me:/home/liszt/work/zc/wp-content/plugins
-	rsync -avz ./index.html zhangs.me:/home/liszt/work/zc/
+	rsync -avz ./zc/index.html zhangs.me:/home/liszt/work/zc/
 pub:put
 	git push origin master
 release:
