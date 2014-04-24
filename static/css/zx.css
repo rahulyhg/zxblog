@@ -7,7 +7,9 @@ body a.coffee-link{width:26px;height:40px;background:url("/static/imgs/icons.png
 body,a,span{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gill Sans MT","Myriad Pro",Myriad,"DejaVu Sans Condensed","Liberation Sans","Nimbus Sans L",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif}
 .pg-item-box{width:100%;min-width:960px;background-color:#fff;}
 .pg-item-box .pg-item{margin:auto;width:960px}
-.ng-view-box{clear:both}
+.ng-view-box{clear:both;}
+.ng-view-box .loading{width:100%;height:500px}
+.ng-view-box .loading img{margin:236px 0 0 50%;position:relative;left:-28px}
 .cup-bar-box{height:240px;background-color:#fcdd58;position:fixed;top:0;z-index:-1000;}
 .cup-bar-box .cup-bar-logo{margin-left:360px;margin-top:28px;display:inline-block;width:343px;height:212px;background:url("/static/imgs/icons.png") 0 2px}
 .fixed-header-bar{position:fixed;top:0;z-index:1000}
@@ -40,6 +42,7 @@ body,a,span{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans"
 .ports .port .port-hover .port-goto a:hover{background:url("/static/imgs/icons.png") -184px -462px}
 .posts-pg-left{width:360px;display:inline-block;float:left}
 .posts-pg-right{width:600px;display:inline-block}
+.posts-list{display:block;}
 .posts-list:hover{background-color:#f9f9f9}
 .posts-list .posts-list-item{padding:30px 0;}
 .posts-list .posts-list-item table{border-collapse:collapse;border-spacing:0;}
@@ -120,3 +123,10 @@ body,a,span{font-family:Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans"
 .cover-page .couple .c-unhover .c-drop{background:url("/static/imgs/icons.png") -12px -1248px}
 .cover-page .couple .c-left .c-intro{border-right:#e2e2e2 solid 1px}
 textarea:hover,input:hover,textarea:active,input:active,textarea:focus,input:focus,button:focus,button:active,button:hover{outline:0 !important;-webkit-appearance:none}
+.my-repeat-animation.ng-enter,.my-repeat-animation.ng-leave,.my-repeat-animation.ng-move{-webkit-transition:.5s linear all;transition:.5s linear all;position:relative}
+.my-repeat-animation.ng-enter{left:-10px;opacity:0}
+.my-repeat-animation.ng-enter.ng-enter-active{left:0;opacity:1}
+.my-repeat-animation.ng-leave{left:0;opacity:1}
+.my-repeat-animation.ng-leave.ng-leave-active{left:-10px;opacity:0}
+.my-repeat-animation.ng-move{opacity:.5}
+.my-repeat-animation.ng-move.ng-move-active{opacity:1}

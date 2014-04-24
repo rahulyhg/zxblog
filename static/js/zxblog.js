@@ -14,7 +14,7 @@ sys_cfg = {
   ani_dur: 300
 };
 
-angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(function($routeProvider) {
+angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate']).config(function($routeProvider) {
   return $routeProvider.when('/', {
     controller: 'AboutCtrl',
     templateUrl: sys_cfg.about_url
@@ -39,7 +39,9 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
     category_name: cat_name,
     paged: $routeParams.page
   };
+  $scope.loading = true;
   return posts_info = postsFactory.get(fat_param, function() {
+    $scope.loading = false;
     $scope.$posts = posts_info.posts;
     $scope.$current_page = $routeParams.page;
     $scope.$catname = $routeParams.catname;
@@ -53,6 +55,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
   var comments, post_info;
   $rootScope.$pg_type = 'post';
   $rootScope.$header_logo_cls = 'header-bar-logo-normal';
+  $scope.loading = true;
   $(window).scrollTop(0);
   $scope.save = function() {
     var coll, com_param, eat, k, q, _i, _len, _ref;
@@ -85,7 +88,8 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
   post_info = postFactory.getter.get({
     postid: $routeParams.postid
   }, function() {
-    return $scope.$post = post_info;
+    $scope.$post = post_info;
+    return $scope.loading = false;
   });
   return comments = commentsFactory.get({
     postid: $routeParams.postid
@@ -106,7 +110,22 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
       });
     };
   }
-]).factory('postFactory', [
+]).directive('loading', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    template: '<div class="loading"><img src="/static/imgs/loading.gif"></div>',
+    link: function(scope, element, attr) {
+      return scope.$watch('loading', function(val) {
+        if (val) {
+          return $(element).show();
+        } else {
+          return $(element).hide();
+        }
+      });
+    }
+  };
+}).factory('postFactory', [
   '$resource', '$http', function($resource, $http) {
     return {
       getter: $resource(sys_cfg.post_data_url, {
@@ -155,9 +174,11 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize']).config(functio
   var ports_info;
   $rootScope.$pg_type = 'portfolio';
   $rootScope.$header_logo_cls = 'header-bar-logo-normal';
+  $scope.loading = true;
   return ports_info = portFactory.get({
     paged: $routeParams.page
   }, function() {
+    $scope.loading = false;
     console.log(ports_info);
     $scope.$ports = ports_info.posts;
     $scope.$port_count = ports_info.found;

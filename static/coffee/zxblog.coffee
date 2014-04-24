@@ -11,7 +11,7 @@ sys_cfg =
     cats_list_url: '/wp_api/v1/taxonomies/category/terms?parent=4&orderby=slug'
     ani_dur: 300
 
-angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
+angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate'])
 
 .config ($routeProvider) ->
     $routeProvider
@@ -38,7 +38,9 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
         category_name: cat_name
         paged: $routeParams.page
         }
+    $scope.loading = true
     posts_info = postsFactory.get fat_param, () ->
+        $scope.loading = false
         $scope.$posts = posts_info.posts
         $scope.$current_page = $routeParams.page
         $scope.$catname = $routeParams.catname
@@ -49,6 +51,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
 .controller('PostCtrl', ($rootScope, $scope, $routeParams, postFactory, commentsFactory)->
     $rootScope.$pg_type = 'post'
     $rootScope.$header_logo_cls = 'header-bar-logo-normal'
+    $scope.loading = true
     $(window).scrollTop 0
 
     #post comment related
@@ -74,6 +77,7 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
             
     post_info = postFactory.getter.get {postid: $routeParams.postid}, () ->
         $scope.$post = post_info
+        $scope.loading = false
     comments = commentsFactory.get  {postid: $routeParams.postid}, () ->
         $scope.$comments = comments.comments
         )
@@ -86,6 +90,18 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
                 $('.post-page .post-content a>img').each ()->
                     $(this).parent().fancybox()
     ])
+.directive('loading', () ->
+    return {
+        restrict: 'E'
+        replace: true
+        template: '<div class="loading"><img src="/static/imgs/loading.gif"></div>'
+        link: (scope, element, attr) ->
+            scope.$watch 'loading', (val) ->
+                if val
+                    $(element).show()
+                else
+                    $(element).hide()
+    })    
 .factory('postFactory', ['$resource', '$http', ($resource, $http) ->
     return {
         getter: $resource sys_cfg.post_data_url, {id: '@postid'}, {}
@@ -113,8 +129,10 @@ angular.module('zxblog', ['ngRoute', 'ngResource', 'ngSanitize'])
     # ui related
     $rootScope.$pg_type = 'portfolio'
     $rootScope.$header_logo_cls = 'header-bar-logo-normal'
+    $scope.loading = true
 
     ports_info = portFactory.get {paged: $routeParams.page}, () ->
+        $scope.loading = false
         console.log ports_info
         $scope.$ports = ports_info.posts
         $scope.$port_count = ports_info.found

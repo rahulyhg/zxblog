@@ -14,7 +14,9 @@
         </div>
     </div>
 </div>
-<div class="pg-item-box posts-list" ng-repeat="$post in $posts">
+<loading></loading>
+<div class="pg-item-box posts-list my-repeat-animation" ng-repeat="$post in $posts"
+     ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
   <div class="pg-item posts-list-item">
     <table cellspacing="0"><tr><td style="vertical-align: bottom;"> 
     <div class="posts-pg-left">

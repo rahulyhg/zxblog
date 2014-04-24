@@ -19,7 +19,14 @@ body, a, span
     margin auto
     width pg-width
 .ng-view-box
-    clear both
+  clear both
+  .loading
+    width 100%
+    height 500px
+  .loading img
+    margin 236px 0 0 50%
+    position relative
+    left -28px
 
 .cup-bar-box
   height cup-bar-ht
@@ -153,6 +160,7 @@ body, a, span
   display inline-block
 
 .posts-list
+  display block
   &:hover
     background-color posts-list-hover-bg
   .posts-list-item
@@ -441,4 +449,33 @@ button:active,
 button:hover
     outline 0px !important
     -webkit-appearance none
- 
+
+.my-repeat-animation.ng-enter, 
+.my-repeat-animation.ng-leave, 
+.my-repeat-animation.ng-move
+  -webkit-transition 0.5s linear all
+  transition 0.5s linear all
+  position relative
+
+.my-repeat-animation.ng-enter
+  left -10px
+  opacity 0
+
+.my-repeat-animation.ng-enter.ng-enter-active
+  left 0
+  opacity 1
+
+.my-repeat-animation.ng-leave
+  left 0
+  opacity 1
+
+.my-repeat-animation.ng-leave.ng-leave-active
+  left -10px
+  opacity 0
+
+.my-repeat-animation.ng-move
+  opacity 0.5
+
+.my-repeat-animation.ng-move.ng-move-active
+  opacity 1
+

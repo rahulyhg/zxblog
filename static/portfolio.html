@@ -1,7 +1,9 @@
+<loading></loading>
 <div class="pg-item" style="padding-top: 1px;">
     <div class="ports">
-        <div class="port" ng-init="mover=0"  ng-repeat="$port in $ports"
-             ng-mouseover="mover=1" ng-mouseleave="mover=0">
+        <div class="port my-repeat-animation" ng-init="mover=0"  ng-repeat="$port in $ports"
+             ng-mouseover="mover=1" ng-mouseleave="mover=0"
+             ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
             <div class="port-normal" ng-hide="mover">
                 <img width=240 height=240
                      src="{{$port.thumbnail}}" class="" alt="{{$port.title}}" />
